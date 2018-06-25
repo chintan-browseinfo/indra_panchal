@@ -9,12 +9,12 @@
                 <field name="name"/>
                 <field name="phone_number" />
                 <field name="email" />
-                <field name="address" />
+                 <field name="address" />
                 <field name="birthday" />
                 <field name="gender" />                
                 <field name="degree" />
                 <field name="education_id" String="education Stream" invisible="1"/>
-                <field name="student_document" String="Student Document" />
+                <field name="student_document" String="Student Document" invisible="0" editable="bottom"/>
                 <field name="course_name" />
                 <field name="course_id" String="Course" invisible="1"/>
                 <field name="student_club_ids" String="club" />
@@ -43,15 +43,13 @@
                 <group>
                     <group>
                         <field name="education_id" String="education Stream" />
-                        <field name="student_document" String="Student Document" />
+                        <field name="student_club_ids" String="Club" widget="many2many_tags" options="{'no_create_edit': True}" />
                     </group>
                     <group>
                         <field name="course_id" String="Course"/>
                         <field name="course_name" />
                     </group>
-                    <group>
-                        <field name="student_club_ids" String="Club" widget="many2many_tags" options="{'no_create_edit': True}" />
-                    </group>
+                        <field name="student_document" String="Student Document" editable="bottom"/>
                 </group>
             </sheet>
             </form>
