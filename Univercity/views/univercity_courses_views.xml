@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+	<record id="view_univercity_course_tree" model="ir.ui.view">
+		<field name="name">univercitycourse.module.tree</field>
+		<field name="model">univercitycourse.module</field>
+		<field name="priority">3</field>
+		<field name="arch" type="xml">
+			<tree string="Univercity Course">
+				<field name="name"/>
+				<field name="course_name"/>
+				<field name="education_id" String="education Stream" />
+				<field name="sub_education_id" String="Sub Education Stream" />
+				<field name="course_duration"/>
+				<field name="course_fees" />
+				<field name="course_time" />
+				<!-- <field name="student_ids" invicible='1'/> -->
+			</tree>
+		</field>
+	</record>
+	<record id="view_univercity_course_form" model="ir.ui.view">
+		<field name="name">univercitycourse.module.form</field>
+		<field name="model">univercitycourse.module</field>
+		<field name="arch" type="xml">
+			<form string="Univercity Course" class="o_sale_order">
+				<sheet>
+					<group>
+						<field name="name"/>
+					</group>
+					<group>
+						<group>
+							<field name="education_id" String="Education Stream" />
+							<field name="sub_education_id" String="Sub Education Stream" />
+						</group>
+						<group>
+							<field name="course_name"/>
+							<field name="course_duration" />
+						</group>
+					</group>
+					<group>
+						<group>
+							<field name="course_fees" />
+						</group>
+						<group>
+							<field name="course_time" />
+						</group>
+					</group>
+					<!-- <group>
+						<field name="student_ids" invicible='1'/>
+					</group> -->
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="univercity_course_action" model="ir.actions.act_window">
+		<field name="name">Univercity Course</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">univercitycourse.module</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+			</p><p>
+			</p>
+		</field>
+	</record>
+
+	<menuitem action="univercity_course_action"
+			id="menu_sample_module_2" parent="Univercity.menu_student_application_config"
+			name="Univercity Course"
+			sequence="15" />
+</odoo>

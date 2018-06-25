@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+    <record id="view_univercity_club_tree" model="ir.ui.view">
+        <field name="name">univercityclub.module.tree</field>
+        <field name="model">univercityclub.module</field>
+        <field name="priority">2</field>
+        <field name="arch" type="xml">
+            <tree string="Univercity Clubs">
+                <field name="name" />
+                <field name="univercity_club_ids" invisible='1'/>                
+            </tree>
+        </field>
+    </record>
+    <record id="view_univercity_club_form" model="ir.ui.view">
+        <field name="name">univercityclub.module.form</field>
+        <field name="model">univercityclub.module</field>
+        <field name="arch" type="xml">
+            <form string="Univercity Clubs" class="o_sale_order">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="univercity_club_ids" invisible='1'/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="univercity_club_action" model="ir.actions.act_window">
+        <field name="name">Univercity Clubs</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">univercityclub.module</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+            </p>
+        </field>
+    </record>
+    <menuitem action="univercity_club_action"
+            id="menu_sample_module_5" parent="Univercity.menu_student_application_config"
+            name="Univercity Clubs"
+            sequence="20" />
+</odoo>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+    <record id="view_student_application_tree" model="ir.ui.view">
+        <field name="name">studentapplication.module.tree</field>
+        <field name="model">studentapplication.module</field>
+        <field name="priority">2</field>
+        <field name="arch" type="xml">
+            <tree string="Student Application">
+                <field name="name"/>
+                <field name="phone_number" />
+                <field name="email" />
+                <field name="address" />
+                <field name="birthday" />
+                <field name="gender" />                
+                <field name="degree" />
+                <field name="education_id" String="education Stream" invisible="1"/>
+                <field name="student_document" String="Student Document" />
+                <field name="course_name" />
+                <field name="course_id" String="Course" invisible="1"/>
+                <field name="student_club_ids" String="club" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_student_application_form" model="ir.ui.view">
+        <field name="name">studentapplication.module.form</field>
+        <field name="model">studentapplication.module</field>
+        <field name="arch" type="xml">
+            <form string="Student Applications" class="o_sale_order">
+            <sheet>
+                <group>    
+                    <group>
+                        <field name="name"/>
+                        <field name="birthday" />
+                        <field name="gender" />
+                        <field name="degree" />
+                    </group>
+                    <group>
+                        <field name="address" />
+                        <field name="phone_number" />
+                        <field name="email" />
+                    </group>
+                </group>
+                <group>
+                    <group>
+                        <field name="education_id" String="education Stream" />
+                        <field name="student_document" String="Student Document" />
+                    </group>
+                    <group>
+                        <field name="course_id" String="Course"/>
+                        <field name="course_name" />
+                    </group>
+                    <group>
+                        <field name="student_club_ids" String="Club" widget="many2many_tags" options="{'no_create_edit': True}" />
+                    </group>
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+   <!--  <record model="ir.ui.view" id="view_sale_order_kanban">
+        <field name="name">studentapplication.module.kanban</field>
+        <field name="model">studentapplication.module</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name"/>
+                <field name="phone_number" />
+                <field name="address" />
+                <field name="birthday" />
+                <field name="age" />
+                <field name="gender" />                
+                <field name="degree" />
+                <field name="course_duration" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <strong><span><t t-esc="record.name.value"/></span></strong>
+                                </div>
+                                <div class="col-xs-6 pull-right text-right">
+                                    <strong><field name="phone_number" widget="monetary"/></strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6 text-muted">
+                                    <span><t t-esc="record.degree.value"/> <t t-esc="record.course_duration.value"/></span>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record> -->
+    <record id="student_application_action" model="ir.actions.act_window">
+        <field name="name">Student Application</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">studentapplication.module</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+            </p><p>
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Univercity"
+        id="menu_univercity_root"
+        sequence="25"/>
+
+    <menuitem id="menu_student_application_config" name="Univercity"
+        parent="menu_univercity_root" sequence="1" />
+        
+
+    <menuitem action="student_application_action"
+            id="menu_sample_module_1" parent="Univercity.menu_student_application_config"
+            name="Student Application"
+            sequence="13" />
+</odoo>

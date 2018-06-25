@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+    <record id="view_student_document_tree" model="ir.ui.view">
+        <field name="name">studentdocument.module.tree</field>
+        <field name="model">studentdocument.module</field>
+        <field name="priority">2</field>
+        <field name="arch" type="xml">
+            <tree string="Student Document">
+                <field name="name" />
+                <field name="student_id" invisible='1'/>  
+                <field name="document_name" />              
+            </tree>
+        </field>
+    </record>
+    <record id="view_student_document_form" model="ir.ui.view">
+        <field name="name">studentdocument.module.form</field>
+        <field name="model">studentdocument.module</field>
+        <field name="arch" type="xml">
+            <form string="Student Document" class="o_sale_order">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="student_id" invisible='1'/>
+                        <field name="document_name" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="student_document_action" model="ir.actions.act_window">
+        <field name="name">Student Document</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">studentdocument.module</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+            </p>
+        </field>
+    </record>
+    <menuitem action="student_document_action"
+            id="menu_sample_module_6" parent="Univercity.menu_student_application_config"
+            name="Student Document"
+            sequence="21" />
+</odoo>
