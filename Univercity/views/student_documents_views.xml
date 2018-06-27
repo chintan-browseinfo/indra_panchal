@@ -3,7 +3,7 @@
     <record id="view_student_document_tree" model="ir.ui.view">
         <field name="name">studentdocument.module.tree</field>
         <field name="model">studentdocument.module</field>
-        <field name="priority">2</field>
+        <field name="priority" eval="2"></field>
         <field name="arch" type="xml">
             <tree string="Student Document">
                 <field name="name" />
