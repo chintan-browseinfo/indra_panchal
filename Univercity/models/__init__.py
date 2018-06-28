@@ -1,6 +1,6 @@
 import Student_application
 import Univercity_courses
 import Education_details
-import Sub_Education_details
 import univercity_club
+import student_inquiry
 import Student_document

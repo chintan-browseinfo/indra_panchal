@@ -5,4 +5,5 @@ class Univercity_club(models.Model):
 
 	name = fields.Char(String='univercityclub',required=True)
 	univercity_club_ids = fields.Many2many('studentapplication.module', 'stu_uniclub_rel', 'uniclub_id', 'student_club_id',  string="Club")
+	club_fees = fields.Integer(String='Club Fees')
 	

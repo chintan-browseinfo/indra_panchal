@@ -1,144 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo> 
-<data> 
-	<record id="view_education_stream_tree" model="ir.ui.view">
-		<field name="name">education.module.tree</field>
-		<field name="model">education.module</field>
-		<field name="priority">2</field>
-		<field name="arch" type="xml">
-			<tree string="Education Stream">
-				<field name="name" />
-				<field name="type" invisible="context.get('type',True)"/>
-			</tree>
-		</field>
-	</record>
-	<record id="view_education_stream_form" model="ir.ui.view">
-		<field name="name">education.module.form</field>
-		<field name="model">education.module</field>
-		<field name="arch" type="xml">
-			<form string="Education Stream" class="o_sale_order">
-				<sheet>
-					<group>
-						<field name="name" />
-					</group>
-				</sheet>
-			</form>
-		</field>
-	</record>
-
-	<record id="education_stream_action" model="ir.actions.act_window">
-		<field name="name">Education Stream</field>
-		<field name="type">ir.actions.act_window</field>
-		<field name="res_model">education.module</field>
-		<field name="view_type">form</field>
-		<field name="view_mode">tree,kanban,form</field>
-		<field name="view_id" ref="view_education_stream_tree"/>
-		<field name="context">{'type':'bacholer'}</field>
-		<field name="help" type="html">
-				<p class="oe_view_nocontent_create">
-				</p>
-		</field>
-	</record>
-	<record id="education_stream_action_view1" model="ir.actions.act_window.view">
-		<field eval="1" name="sequence"/>
-		<field name="view_mode">tree</field>
-		<field name="act_window_id" ref="education_stream_action"/>
-	</record>
-	<record id="education_stream_action_view2" model="ir.actions.act_window.view">
-		<field eval="1" name="sequence"/>
-		<field name="view_mode">form</field>
-		<field name="view_id" ref="view_education_stream_form"/>
-		<field name="act_window_id" ref="education_stream_action"/>
-	</record>
-
-	<record id="education_stream_action1" model="ir.actions.act_window">
-		<field name="name">Education Stream</field>
-		<field name="type">ir.actions.act_window</field>
-		<field name="res_model">education.module</field>
-		<field name="view_type">form</field>
-		<field name="view_mode">tree,kanban,form</field>
-		<field name="view_id" ref="view_education_stream_tree"/>
-		<field name="domain">[('type','=',('bachelor'))]</field>
-		<field name="context">{'type':'bachelor', 'journal_type': 'bachelor'}
-		</field>
-		<field name="help" type="html">
-				<p class="oe_view_nocontent_create">
-				</p>
-		</field>
-	</record>
-	<record id="education_stream_action_view1" model="ir.actions.act_window.view">
-		<field eval="1" name="sequence"/>
-		<field name="view_mode">tree</field>
-		<field name="view_id" ref="view_education_stream_tree"/>
-		<field name="act_window_id" ref="education_stream_action1"/>
-	</record>
-	<record id="education_stream_action_view2" model="ir.actions.act_window.view">
-		<field eval="1" name="sequence"/>
-		<field name="view_mode">form</field>
-		<field name="view_id" ref="view_education_stream_form"/>
-		<field name="act_window_id" ref="education_stream_action1"/>
-	</record>
-
-	<menuitem action="education_stream_action1" id="menu_sample_module_3" 
-			parent="Univercity.menu_student_application_config"	name="Education Stream"
-			sequence="15" />
-					
-	<record id="view_ugpg_education_stream_tree" model="ir.ui.view">
-		<field name="name">ugpg.education.module.tree</field>
-		<field name="model">education.module</field>
-		<field name="priority">2</field>
-		<field name="arch" type="xml">
-			<tree string="UgPg Education Stream">
-				<field name="name" />
-				<field name="Qualification" />
-				<field name="type" invisible="context.get('type',True)"/>
-			</tree>
-		</field>
-	</record>
-	<record id="view_ugpg_education_stream_form" model="ir.ui.view">
-		<field name="name">ugpg.education.module.form</field>
-		<field name="model">education.module</field>
-		<field name="arch" type="xml">
-			<form string="UgPg Education Stream" class="o_sale_order">
-				<sheet>
-					<group>
-						<field name="name" />
-						<field name="Qualification" />
-					</group>
-				</sheet>
-			</form>
-		</field>
-	</record>
-
-	<record id="ugpg_education_stream_action" model="ir.actions.act_window">
-		<field name="name">UgPg Education Stream</field>
-		<field name="type">ir.actions.act_window</field>
-		<field name="res_model">education.module</field>
-		<field name="view_type">form</field>
-		<field name="view_mode">tree,kanban,form</field>
-		<field eval="False" name="view_id"/>
-		<field name="domain">[('type','=',('master'))]</field>
-		<field name="context">{'default_type': 'master', 'type': 'master', 'journal_type': 'master'}</field>
-		<field name="help" type="html">
-				<p class="oe_view_nocontent_create">
-				Click to enter sub education system.
-			</p>
-		</field>
-	</record>
-	<record id="ugpg_education_stream_action_view1" model="ir.actions.act_window.view">
-		<field eval="1" name="sequence"/>
-		<field name="view_mode">tree</field>
-		<field name="view_id" ref="view_ugpg_education_stream_tree"/>
-		<field name="act_window_id" ref="ugpg_education_stream_action"/>
-	</record>
-	<record id="ugpg_education_stream_action_view2" model="ir.actions.act_window.view">
-		<field eval="1" name="sequence"/>
-		<field name="view_mode">form</field>
-		<field name="view_id" ref="view_ugpg_education_stream_form"/>
-		<field name="act_window_id" ref="ugpg_education_stream_action"/>
-	</record>
-	
-	<menuitem action="ugpg_education_stream_action" id="menu_sample_module_8" 
-			parent="Univercity.menu_student_application_config" name="ugpg Education Stream" sequence="16" />
-</data>
+<odoo>  
+    <record id="view_education_stream_tree" model="ir.ui.view">
+        <field name="name">education.module.tree</field>
+        <field name="model">education.module</field>
+        <field name="priority">2</field>
+        <field name="arch" type="xml">
+            <tree string="Education Stream">
+                <field name="name" />                              
+            </tree>
+        </field>
+    </record>
+    <record id="view_education_stream_form" model="ir.ui.view">
+        <field name="name">education.module.form</field>
+        <field name="model">education.module</field>
+        <field name="arch" type="xml">
+            <form string="Education Stream" class="o_sale_order">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="education_stream_action" model="ir.actions.act_window">
+        <field name="name">Education Stream</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">education.module</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+            </p>
+        </field>
+    </record>
+    <menuitem action="education_stream_action"
+            id="menu_sample_module_3" parent="Univercity.menu_student_application_config"
+            name="Education Stream"
+            sequence="13" />
 </odoo>

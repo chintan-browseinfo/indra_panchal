@@ -9,7 +9,7 @@
                     <field name="name"/>
                     <field name="title"/>
                     <field name="date_release"/>
-                    <field name="account_id" string="Producer"/>
+                    <field name="partner_id" string="Producer"/>
                 </tree>
             </field>
         </record>
@@ -23,13 +23,14 @@
                 <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="account_id"/>
+                            <field name="partner_id"/>
                         </group>
                         <field name="star_line" editable="bottom" invisible='0'/>
                     <group>
                         <group>
                         	<field name="title" />
-                            
+                            <field name="days_running" />
+                            <field name="email" />
                         </group>
 
                         <group>

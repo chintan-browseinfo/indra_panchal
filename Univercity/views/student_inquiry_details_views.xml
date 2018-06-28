@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+    <record id="view_student_inquiry_tree" model="ir.ui.view">
+        <field name="name">studentinquiry.module.tree</field>
+        <field name="model">studentinquiry.module</field>
+        <field name="priority">2</field>
+        <field name="arch" type="xml">
+            <tree string="Student Inquiry">
+                <field name="name"/>
+                <field name="contact" />
+                <field name="email" />
+                <field name="address" />
+                <field name="birthday" />
+                <field name="Age" />
+                <field name="gender" />
+                <field name="qualification" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_student_inquiry_form" model="ir.ui.view">
+        <field name="name">studentinquiry.module.form</field>
+        <field name="model">studentinquiry.module</field>
+        <field name="arch" type="xml">
+            <form string="Student Inquiry" class="o_sale_order">
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="birthday" />
+                    <field name="Age" />
+                    <field name="gender" />
+                </group>
+                <group>
+                    <field name="address" />
+                    <field name="contact" />
+                    <field name="email" />
+                    <field name="qualification" />
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="student_inquiry_action" model="ir.actions.act_window">
+        <field name="name">Student Inquiry</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">studentinquiry.module</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+            </p>
+        </field>
+    </record>
+    <menuitem action="student_inquiry_action"
+            id="menu_sample_module_1" parent="Univercity.menu_student_application_config"
+            name="Student Inquiry"
+            sequence="11" />
+</odoo>

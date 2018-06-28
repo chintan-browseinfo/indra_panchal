@@ -7,17 +7,19 @@
         <field name="arch" type="xml">
             <tree string="Student Application" >
                 <field name="name"/>
-                <field name="phone_number" />
+                <field name="contact" />
                 <field name="email" />
-                 <field name="address" />
+                 <field name="address" invisible='1'/>
                 <field name="birthday" />
+                <field name="Age" invisible='1'/>
                 <field name="gender" />                
-                <field name="degree" />
                 <field name="education_id" String="education Stream" invisible="1"/>
-                <field name="student_document" String="Student Document" widget="one2many_list" />
+                <field name="student_document" String="Student Document" widget="one2many_list" invisible='1'/>
                 <field name="course_name" />
                 <field name="course_id" String="Course" invisible="1"/>
+                <!-- <field name="course_due" /> -->
                 <field name="student_club_ids" String="club" />
+                <field name="total_fees" />
             </tree>
         </field>
     </record>
@@ -32,22 +34,24 @@
                         <field name="name"/>
                         <field name="birthday" />
                         <field name="gender" />
-                        <field name="degree" />
                     </group>
                     <group>
                         <field name="address" />
-                        <field name="phone_number" />
+                        <field name="contact" />
                         <field name="email" />
+                        <field name="Age" />
                     </group>
                 </group>
                 <group>
                     <group>
                         <field name="education_id" String="education Stream" />
                         <field name="student_club_ids" String="Club" widget="many2many_tags" options="{'no_create_edit': True}" />
+                        <field name="total_fees" />
                     </group>
                     <group>
                         <field name="course_id" String="Course"/>
                         <field name="course_name" />
+                        <!-- <field name="course_due" /> -->
                     </group>
                 </group>
                 <group name = "custom_lines" string="Custom Lines"> 
@@ -55,7 +59,7 @@
                         <tree editable = "bottom"> 
                             <field name = "name" /> 
                             <field name="student_id" invisible='0'/>
-                            <field name="document_name" invisible='0'/>
+                            <!-- <field name="document_name" invisible='0'/> -->
                         </tree> 
                     </field> 
                 </group>
@@ -69,7 +73,7 @@
         <field name="arch" type="xml">
             <kanban class="o_kanban_mobile">
                 <field name="name"/>
-                <field name="phone_number" />
+                <field name="contact" />
                 <field name="address" />
                 <field name="birthday" />
                 <field name="age" />
@@ -84,7 +88,7 @@
                                     <strong><span><t t-esc="record.name.value"/></span></strong>
                                 </div>
                                 <div class="col-xs-6 pull-right text-right">
-                                    <strong><field name="phone_number" widget="monetary"/></strong>
+                                    <strong><field name="contact" widget="monetary"/></strong>
                                 </div>
                             </div>
                             <div class="row">
@@ -120,7 +124,7 @@
         
 
     <menuitem action="student_application_action"
-            id="menu_sample_module_1" parent="Univercity.menu_student_application_config"
+            id="menu_sample_module_2" parent="Univercity.menu_student_application_config"
             name="Student Application"
-            sequence="13" />
+            sequence="12" />
 </odoo>
