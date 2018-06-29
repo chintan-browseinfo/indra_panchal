@@ -24,16 +24,18 @@ class StudentApplication(models.Model):
 	course_name = fields.Char('course_name',compute=_compute_student_code)
 	course_id = fields.Many2one('univercitycourse.module', String="Course")
 	# course_due = fields.Char('univercitycourse.module',related='course_id.course_time',String="Course Time")
+	student_club_ids = fields.Many2many('univercityclub.module', 'stu_uniclub_rel', 'student_club_id','uniclub_id', string="Club")
 
-	@api.multi
+	@api.one
 	@api.depends('student_club_ids')
 	def _cal_fees(self):
 		fees_bucket = 0
 		for fees in self:
-			fees_bucket += self.student_club_ids.club_fees 
-
+			for ids in fees.student_club_ids:
+				fees_bucket += ids.club_fees 
+			print 'fees_bucket --->',fees_bucket 
 		fees.total_fees = fees_bucket
 
 	total_fees = fields.Char(String='Total Fees',compute='_cal_fees',store=True )
-	student_club_ids = fields.Many2many('univercityclub.module', 'stu_uniclub_rel', 'student_club_id','uniclub_id', string="Club")
+	
 	# collage_club_fees = fields.Integer('univercityclub.module',related='Univercity.view_univercity_club_form',String='Total Club Fees')
