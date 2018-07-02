@@ -8,7 +8,8 @@
             <tree string="Univercity Clubs">
                 <field name="name" />
                 <field name="univercity_club_ids" invisible='1'/>    
-                <field name="club_fees" />            
+                <field name="club_fees" />  
+                <field name="club_duration" />          
             </tree>
         </field>
     </record>
@@ -22,6 +23,7 @@
                         <field name="name" />
                         <field name="univercity_club_ids" invisible='1'/>
                         <field name="club_fees" />
+                        <field name="club_duration" />
                     </group>
                 </sheet>
             </form>

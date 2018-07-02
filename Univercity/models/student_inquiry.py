@@ -19,13 +19,13 @@ class StudentInquiry(models.Model):
 			ages.Age = str(years) +' years ' + str(month) + ' months ' + str(age_days) + ' days '
 
 	name = fields.Char(String='Student Name',required=True)
-	email = fields.Char(String='Email Address',required=True)
-	contact = fields.Char(String='Contact Number',required=True,size=10)
+	email = fields.Char(String='Email Address',required=True,copy=False)
+	contact = fields.Char(String='Contact Number',required=True,size=10,copy=False)
 	address = fields.Text(String='Address')
 	birthday = fields.Date(string='Birthday Date',required=True, copy=False)
 	Age =  fields.Char('Age of Student', store=True, compute='_cal_age')
 	gender = fields.Selection([
 		('M','Male'),
-		('F','Female')],String='select Gender',required=True)
+		('F','Female')],String='select Gender')
 	qualification = fields.Selection([('ssc','10th Pass'),
 		('hsc','12th Pass'),],String="Qualification") 

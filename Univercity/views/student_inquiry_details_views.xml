@@ -50,6 +50,14 @@
             </p>
         </field>
     </record>
+
+    <menuitem name="Univercity"
+            id="menu_univercity_root"
+            sequence="25"/>
+
+    <menuitem id="menu_student_application_config" name="Univercity"
+            parent="menu_univercity_root" sequence="1" />
+            
     <menuitem action="student_inquiry_action"
             id="menu_sample_module_1" parent="Univercity.menu_student_application_config"
             name="Student Inquiry"
