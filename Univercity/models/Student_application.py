@@ -6,16 +6,17 @@ class StudentApplication(models.Model):
 	_inherit = 'mail.thread'
 	_description = "Student application Module"
 
-	name = fields.Many2one('studentinquiry.module', String='Name',required=True,track_visibility='onchange')
-	contact = fields.Char(String='Contact Number',related='name.contact')
-	email = fields.Char(String='Email Address',related='name.email')
-	address = fields.Text(String='Address',related='name.address')
-	birthday = fields.Date(string='Birthday Date',related='name.birthday')
-	Age =  fields.Char('Age of Student',related='name.Age')
-	gender = fields.Selection(String='select Gender',related='name.gender')
+	name = fields.Many2one('studentinquiry.module',required=True,track_visibility='onchange')
+	contact = fields.Char(related='name.contact')
+	email = fields.Char(related='name.email')
+	address = fields.Text(related='name.address')
+	birthday = fields.Date(related='name.birthday')
+	Age =  fields.Char(related='name.Age')
+	gender = fields.Selection(related='name.gender')
 	
-	education_id = fields.Many2one('education.module',String="Education")
-	student_document = fields.One2many('studentdocument.module', 'student_id',String="Student Document")
+	education_id = fields.Many2one('education.module')
+	
+	student_app_ids = fields.Many2many('studentdocument.module','app_doc_rel','doc_id','app_id')
 
 	@api.multi
 	@api.depends("course_id")
@@ -26,9 +27,9 @@ class StudentApplication(models.Model):
 		for o in self:
 			o.course_time = o.course_id.course_time
 
-	course_name = fields.Char('course_name',compute=_compute_student_code)
-	course_time = fields.Char('course_time',compute=_compute_student_code)
-	course_id = fields.Many2one('univercitycourse.module', String="Course")
+	course_name = fields.Char('Course Name',compute=_compute_student_code)
+	course_time = fields.Char('Course Time',compute=_compute_student_code)
+	course_id = fields.Many2one('univercitycourse.module')
 	
 	@api.one
 	@api.depends('student_club_ids')
@@ -40,23 +41,27 @@ class StudentApplication(models.Model):
 
 		fees.total_fees = fees_bucket
 	
-	student_club_ids = fields.Many2many('univercityclub.module', 'stu_uniclub_rel', 'student_club_id','uniclub_id', string="Club")
+	student_club_ids = fields.Many2many('univercityclub.module', 'stu_uniclub_rel', 'student_club_id','uniclub_id',String="Student Club")
 	
 
 	@api.model
 	def create(self,vals):
-		print "=========vals=========",vals
+		# print "=========vals=========",vals
+		
 		if not vals.get('student_club_ids'):
 			raise ValidationError(_('Configuration error!\nYou have to participate at least 1 club.'))
 		elif len(vals.get('student_club_ids')[0][2]) > 3:
 			raise ValidationError(_('Configuration error!\nYou cannot participate in more than 3 clubs.'))
+		
 		club = self.env['univercitycourse.module'].browse(vals.get('course_id'))
+		
 		# print "=========clubs=========",club,vals.get('education_id'),club.education_id
+		
 		if vals.get('education_id') != club.education_id.id:
 			raise ValidationError(_('Configuration error!\nYou cannot select courses from another streams.'))
 		student = super(StudentApplication,self).create(vals)
-	
 		return student
+		
 		# if student:
 		# 	email_id = self.env['studentapplication.module'].browse(vals.get('email'))
 		# 	print '=====================email===========',email_id
@@ -66,12 +71,15 @@ class StudentApplication(models.Model):
 	@api.multi
 	def write(self,vals):
 		# print "=========vals=========",vals
+		
 		club = self.env['univercitycourse.module'].browse(vals.get('course_id'))
+		
 		# print "=========clubs=========",club,vals.get('education_id'),club.education_id
+		
 		if vals.get('education_id') != club.education_id.id:
 			raise ValidationError(_('Configuration error!\nYou cannot select courses from another streams.'))
 		student = super(StudentApplication,self).write(vals)
 		
 		return student
 
-	total_fees = fields.Char(String='Total Fees',compute='_cal_fees',store=True )
+	total_fees = fields.Char(compute='_cal_fees',store=True )

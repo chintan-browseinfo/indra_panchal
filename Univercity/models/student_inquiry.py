@@ -24,6 +24,7 @@ class StudentInquiry(models.Model):
 	address = fields.Text(String='Address')
 	birthday = fields.Date(string='Birthday Date',required=True, copy=False)
 	Age =  fields.Char('Age of Student', store=True, compute='_cal_age')
+	
 	gender = fields.Selection([
 		('M','Male'),
 		('F','Female')],String='select Gender')

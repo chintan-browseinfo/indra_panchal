@@ -15,6 +15,7 @@
 		'views/univercity_club_views.xml',
 		'views/education_stream_views.xml',
 		'views/student_documents_views.xml',
+		# 'views/aadhar_valid_views.xml',
 		],
 	'demo':[],
 	'css':[],

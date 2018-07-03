@@ -6,21 +6,25 @@
 		<field name="priority">2</field>
 		<field name="arch" type="xml">
 			<tree string="Student Application" >
-				<field name="name"/>
-				<field name="contact" />
-				<field name="email" />
-				 <field name="address" invisible='1'/>
-				<field name="birthday" />
-				<field name="Age" invisible='1'/>
-				<field name="gender" />                
-				<field name="education_id" String="education Stream" invisible="1"/>
-				<field name="student_document" String="Student Document" widget="one2many_list" invisible='1'/>
-				<field name="course_name" />
-				<field name="course_time" invisible='1'/>
-				<!-- <field name="course_type" /> -->
+				<field name="name" String="Student Name"/>
+				<field name="contact" String="Contact Number"/>
+				<field name="email" String="Email Address"/>
+				<field name="gender" String="Gender"/>                
+				<field name="birthday" String="Birthday"/>
+				
+				<field name="Age" invisible='1' String="Student Age"/>
+				<field name="address" invisible='1' String="Home Town"/>
+
+				
+				<field name="education_id" String="Education Stream" invisible="1"/>
+				<field name="student_app_ids" String="Student Document" widget="one2many_checkboxes" invisible='1'/>
+				
+				<field name="course_name" String="Course Name"/>
+				<field name="course_time" invisible='1' String="Course Time"/>
 				<field name="course_id" String="Course" invisible="1"/>
-				<field name="student_club_ids" String="club" />
-				<field name="total_fees" />
+				
+				<field name="student_club_ids" String="Student Club" />
+				<field name="total_fees" String="Club Fees"/>
 			</tree>
 		</field>
 	</record>
@@ -31,39 +35,40 @@
 				<form string="Student Applications" class="o_sale_order">
 				<sheet>
 					<group>    
-							<group>
-									<field name="name"/>
-									<field name="birthday" />
-									<field name="gender" />
-							</group>
-							<group>
-									<field name="address" />
-									<field name="contact" />
-									<field name="email" />
-									<field name="Age" />
-							</group>
+						<group>
+							<field name="name" String="Student Name"/>
+							<field name="birthday" String="Birthday"/>
+							<field name="gender" String="Gender" /> 
+						</group>
+						<group>
+							<field name="address" String="Home Town"/>
+							<field name="contact" String="Contact Number"/>
+							<field name="email" String="Email Address"/>
+							<field name="Age" invisible='0' String="Student Age"/>
+						</group>
 					</group>
 					<group>
-							<group>
-									<field name="education_id" String="education Stream" />
-									<field name="student_club_ids" String="Club" widget="many2many_tags" options="{'no_create_edit': True}" />
-									<field name="total_fees" />
-							</group>
-							<group>
-									<field name="course_id" String="Course"/>
-									<field name="course_name" />
-									<field name="course_time" />
-									<!-- <field name="course_type" /> -->
-							</group>
+						<group>
+							<field name="education_id" String="education Stream" />
+							<field name="student_club_ids" String="Club" widget="many2many_tags" options="{'no_create_edit': True}" />
+							<field name="total_fees" />
+						</group>
+						<group>
+							<field name="course_id" String="Course"/>
+							<field name="course_name" String="Course Name"/>
+						</group>
 					</group>
-					<group name = "custom_lines" string="Custom Lines"> 
+					<group>
+						<field name="student_app_ids" String="Student Document" widget="many2many_checkboxes" invisible='0'/>
+					</group>
+					<!-- <group name = "custom_lines" string="Custom Lines"> 
 							<field name = "student_document" nolabel = "1"> 
 									<tree editable = "bottom"> 
 											<field name = "name" /> 
 											<field name="student_id" invisible='0'/>
 									</tree> 
 							</field> 
-					</group>
+					</group> -->
 				</sheet>
 				</form>
 			</field>
