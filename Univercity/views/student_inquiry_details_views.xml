@@ -24,16 +24,24 @@
             <form string="Student Inquiry" class="o_sale_order">
             <sheet>
                 <group>
-                    <field name="name"/>
-                    <field name="birthday" />
-                    <field name="Age" />
-                    <field name="gender" />
+                    <group>
+                        <field name="name"/>
+                        <field name="gender" />
+                    </group>
+                    <group>
+                        <field name="birthday" />
+                        <field name="Age" />
+                    </group>
                 </group>
                 <group>
-                    <field name="address" />
-                    <field name="contact" />
-                    <field name="email" />
-                    <field name="qualification" />
+                    <group>
+                        <field name="address" />
+                        <field name="contact" />
+                    </group>
+                    <group>
+                        <field name="email" />
+                        <field name="qualification" />
+                    </group>
                 </group>
             </sheet>
             </form>

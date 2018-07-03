@@ -19,12 +19,20 @@
         <field name="arch" type="xml">
             <form string="Univercity Clubs" class="o_sale_order">
                 <sheet>
+                <group>
                     <group>
                         <field name="name" />
                         <field name="univercity_club_ids" invisible='1'/>
+                    </group>
+                </group>
+                <group>
+                    <group>    
                         <field name="club_fees" />
+                    </group>
+                    <group>
                         <field name="club_duration" />
                     </group>
+                </group>
                 </sheet>
             </form>
         </field>

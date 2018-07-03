@@ -1,4 +1,5 @@
 from odoo import models, fields, api, _
+from odoo.exceptions import UserError, ValidationError
 
 class UnivercityClub(models.Model):
 	_name = 'univercityclub.module'
@@ -20,6 +21,21 @@ class UnivercityClub(models.Model):
 		print '===========================vals==================',vals
 		
 		club = self.env['univercityclub.module'].browse(vals.get('club_fees'))
+		if club:
+			if vals.get('club_fees') >= 25000:
+				raise ValidationError('Club is fees limit is 25k')
 
 		create_club = super(UnivercityClub,self).create(vals)
 		return create_club
+
+	@api.multi
+	def write(self,vals):
+		print '===========================vals==================',vals
+		
+		club = self.env['univercityclub.module'].browse(vals.get('club_fees'))
+		if club:
+			if vals.get('club_fees') >= 25000:
+				raise ValidationError('Club is fees limit is 25k')
+
+		write_club = super(UnivercityClub,self).write(vals)
+		return write_club
