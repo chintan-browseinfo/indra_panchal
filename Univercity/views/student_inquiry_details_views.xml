@@ -12,6 +12,7 @@
                 <field name="address" />
                 <field name="birthday" />
                 <field name="Age" />
+                <field name="aid" invisible='1'/>
                 <field name="gender" />
                 <field name="qualification" />
             </tree>
@@ -41,6 +42,7 @@
                     <group>
                         <field name="email" />
                         <field name="qualification" />
+                        <field name="aid" invisible='1'/>
                     </group>
                 </group>
             </sheet>

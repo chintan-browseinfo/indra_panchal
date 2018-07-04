@@ -8,7 +8,7 @@ class PersonAadhar(models.Model):
 
 	@api.model
 	def create(self,vals):
-	  	print "===============vals==============",vals
+		print "===============vals==============",vals
 		
 		a_id = self.env['res.partner'].browse(vals.get('aadhar'))
 		print "===============a_id===========",a_id
@@ -41,3 +41,29 @@ class PersonAadhar(models.Model):
 
 		aadhar = super(PersonAadhar,self).write(vals)
 		return aadhar
+
+class res_partner(models.Model):
+	_inherit = 'res.partner'
+
+	@api.model
+	def default_get(self, vals):
+		res = super(res_partner, self).default_get(vals)
+		country_ids = self.env['res.country'].search([('code','=','IN')])
+
+		if country_ids:
+			res.update({
+						'country_id':country_ids[0].id, # Many2one field
+						'city': 'Ahmedabad',
+						'website': 'www.odootechnical.com',
+						'email' : 'indra@odootechnical.com'
+					   })
+		return res
+
+# class res_2(models.Model):
+# 	_inherit = 'res.partner.title'
+# 	@api.model
+# 	def default_get(self,vals):
+# 		res = super(res_2, self).default_get(vals)
+# 		cid = self.env['res.partner.title'].search([('')])
+	
+# 	return res
