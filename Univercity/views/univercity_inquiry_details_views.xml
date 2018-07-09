@@ -6,14 +6,14 @@
 		<field name="priority">2</field>
 		<field name="arch" type="xml">
 			<tree string="Student Inquiry">
-				<field name="name"/>
-				<field name="contact" />
-				<field name="email" />
-				<field name="address" />
-				<field name="birthday" />
-				<field name="Age" invisible='1'/>
-				<field name="gender" />
-				<field name="qualification_id" />
+				<field name="name" String="Student Name" />
+				<field name="contact" String="Contact" />
+				<field name="email" String="Email" />
+				<field name="address" String="Adress" />
+				<field name="birthday" String="Birthday" />
+				<field name="Age" invisible="1" String="Student Age" />
+				<field name="gender" String="Gender" />
+				<field name="qualification_id" String="Qualification"/>
 			</tree>
 		</field>
 	</record>
@@ -25,27 +25,27 @@
 		<sheet>
 				<div class="oe_title">
                     <h1>
-                        <field name="name" readonly="1"/>
+                        <field name="name" readonly="1" />
                     </h1>
                 </div>	
 				<group>
 					<group>
-						<field name="name"/>
-						<field name="gender" />
+						<field name="name" String="Student Name" />
+						<field name="gender" String="Gender" />
 					</group>
 					<group>
-						<field name="birthday" />
-						<field name="Age" />
+						<field name="birthday" String="Birthday" />
+						<field name="Age" String="Student Age" />
 					</group>
 				</group>
 				<group>
 					<group>
-						<field name="address" />
-						<field name="contact" />
+						<field name="address" String="Adress" />
+						<field name="contact" String="Contact" />
 					</group>
 					<group>
-						<field name="email" />
-						<field name="qualification_id" />
+						<field name="email" String="Email" />
+						<field name="qualification_id" String="Qualification" />
 					</group>
 				</group>
 			</sheet>
@@ -66,10 +66,16 @@
 
 	<menuitem name="Univercity"
 			id="menu_univercity_root"
-			sequence="25"/>
+			sequence="25"  />
 
-	<menuitem id="menu_student_application_config" name="Univercity"
+	<menuitem id="menu_student_application_config" name="Student"
 			parent="menu_univercity_root" sequence="1" />
+
+	<menuitem id="menu_univercity_application_config" name="Univercity"
+			parent="menu_univercity_root" sequence="2" />
+	
+	<menuitem id="menu_univercity_extra_application_config" name="Univercity Activity"
+			parent="menu_univercity_root" sequence="2" />
 			
 	<menuitem action="student_inquiry_action"
 			id="menu_sample_module_1" parent="Univercity.menu_student_application_config"

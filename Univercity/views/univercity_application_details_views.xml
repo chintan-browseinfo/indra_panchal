@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>  
+<odoo>
 	<record id="view_student_application_tree" model="ir.ui.view">
 		<field name="name">studentapplication.module.tree</field>
 		<field name="model">studentapplication.module</field>
@@ -14,8 +14,8 @@
 				<field name="course_name" String="Course Name"/>
 				<field name="total_fees" String="Club Fees"/>
 				<field name="aadharnumber" String="Addhar Number" />
-				<field name="enroll_id" />
-				<field name="password" />
+				<field name="enroll_id" String="Enrollment Number"/>
+				<field name="password" String="Password"/>
 			</tree>
 		</field>
 	</record>
@@ -25,15 +25,15 @@
 		<field name="arch" type="xml">
 		<form string="Student Applications" class="o_sale_order">
 		<header>
-			<button string="Confirm Details" type="object" state='confirm' name="confirm_progressbar" 
+			<button string="Confirm Details" type="object" state="confirm" name="confirm_progressbar" 
 				attrs="{'invisible':[('state','!=','confirm')]}"/>
-		<!-- <button string="Send Email" type="object" state='email' name="btn_send_email"
+		<!-- <button string="Send Email" type="object" state="email" name="btn_send_email"
 				class="oe_button oe_tree_button oe_highlight"
 					confirm="Are you sure you want to Send email to students?" />  -->
-			<button string="Generate Login" type="object" state='login' name="enroll_progressbar" 
+			<button string="Generate Login" type="object" state="login" name="enroll_progressbar" 
 				class="oe_highlight" attrs="{'invisible':['|',('state','!=','login'),('state','=','confirm')]}"/>
-			<button string="Generate password" type="object" state='password' name="password_progressbar" class="oe_highlight" attrs="{'invisible':['|',('state','!=','password'),('state','=','confirm')]}"/>
-			<button string="Done" type="object" state='done' name="done_progressbar" />
+			<button string="Generate password" type="object" state="password" name="password_progressbar" class="oe_highlight" attrs="{'invisible':['|',('state','!=','password'),('state','=','confirm')]}"/>
+			<button string="Done" type="object" state="done" name="done_progressbar" />
 			<field name="state" widget="statusbar"/>
 		</header>
 		<sheet>
@@ -53,7 +53,7 @@
 					<field name="address" String="Home Town"/>
 					<field name="contact" String="Contact Number"/>
 					<field name="email" String="Email Address"/>
-					<field name="Age" invisible='0' String="Student Age"/>
+					<field name="Age" invisible="0" String="Student Age"/>
 				</group>
 			</group>
 			<notebook>
@@ -72,18 +72,18 @@
 								attrs="{'invisible':[('course_id','=',False)]}" />
 						</group>
 						<group>							
-							<field name='aadharid' String="Aadhar Card"/>
+							<field name="aadharid" String="Aadhar Card"/>
 						</group>
 						<group>
-							<field name='aadharnumber' String="Addhar Number" 
+							<field name="aadharnumber" String="Addhar Number" 
 								attrs="{'invisible':[('aadharid','=',False)]}"/>		
 						</group>
 					</group>
 				</page>
 				<page String="Login Information" >
 					<group>
-						<field name="enroll_id" />
-						<field name="password" />
+						<field name="enroll_id" String="Enrollment Number" />
+						<field name="password" String="Password" />
 					</group>
 				</page>
 			</notebook>
@@ -104,16 +104,9 @@
 			</field>
 	</record>
 
-	<menuitem name="Univercity"
-			id="menu_univercity_root"
-			sequence="25"/>
-
-	<menuitem id="menu_student_application_config" name="Univercity"
-			parent="menu_univercity_root" sequence="1" />
-			
-
 	<menuitem action="student_application_action"
 					id="menu_sample_module_2" parent="Univercity.menu_student_application_config"
 					name="Student Application"
 					sequence="6" />
+
 </odoo>

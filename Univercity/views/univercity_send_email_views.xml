@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<odoo>
-<data>       
+<odoo>     
     <record id="create_section_for_thesis_template" model="studentapplication.module">
         <field name="name">Create Section for Thesis</field>
         <field name="studentapplication.module" ref="view_student_application_form"></field>
@@ -22,5 +20,4 @@
         ]]>
         </field>
     </record>
-</data>
 </odoo>   

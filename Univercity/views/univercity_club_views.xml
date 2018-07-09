@@ -6,10 +6,9 @@
         <field name="priority">2</field>
         <field name="arch" type="xml">
             <tree string="Univercity Clubs">
-                <field name="name" />
-                <field name="univercity_club_ids" invisible='1'/>    
-                <field name="club_fees" />  
-                <field name="club_duration" />          
+                <field name="name" String="Club Name" />    
+                <field name="club_fees" String="Club Fees" />  
+                <field name="club_duration" String="Club Duration" />          
             </tree>
         </field>
     </record>
@@ -21,21 +20,21 @@
             <sheet>
                 <div class="oe_title">
                     <h1>
-                        <field name="name" readonly="1"/>
+                        <field name="name" readonly="1" />
                     </h1>
                 </div>                
                 <group>
                     <group>
-                        <field name="name" />
-                        <field name="univercity_club_ids" invisible='1'/>
+                        <field name="name" String="Club Name" />
+                        <field name="univercity_club_ids" invisible="1"/>
                     </group>
                 </group>
                 <group>
                     <group>    
-                        <field name="club_fees" />
+                        <field name="club_fees" String="Club Fees" />
                     </group>
                     <group>
-                        <field name="club_duration" />
+                        <field name="club_duration" String="Club Duration" />
                     </group>
                 </group>
                 </sheet>
@@ -54,7 +53,7 @@
         </field>
     </record>
     <menuitem action="univercity_club_action"
-            id="menu_sample_module_4" parent="Univercity.menu_student_application_config"
+            id="menu_sample_module_4" parent="Univercity.menu_univercity_extra_application_config"
             name="Univercity Clubs"
-            sequence="7" />
+            sequence="8"   />
 </odoo>

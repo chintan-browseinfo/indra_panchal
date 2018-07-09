@@ -6,15 +6,16 @@
 		<field name="priority">3</field>
 		<field name="arch" type="xml">
 			<tree string="Univercity Course">
-				<field name="name"/>
-				<field name="code" />
-				<field name="course_type" />
-				<field name="course_name"/>
-				<field name="education_id" String="education Stream" />
-				<field name="course_duration"/>
-				<field name='qualification_id' String="Qualification Required" invisible='1' />
-				<field name="course_fees" />
-				<field name="course_time" />
+				<field name="name" String="Course Name" />
+				<field name="code" String="Course Code" />
+				<field name="course_type" String="Course Type" />
+				<field name="course_name" String="Course Full Name" />
+				<field name="education_id" String="Education Stream" />
+				<field name="course_duration" String="Course Duration" />
+				<field name="qualification_id" String="Required Qualification" invisible="1"   />
+				<field name="course_fees" String="Course Fees" />
+				<field name="course_time" String="Course Time" />
+				<field name="univercity_book_ids" invisible="1" String="Course Books" /> 
 			</tree>
 		</field>
 	</record>
@@ -26,29 +27,31 @@
 				<sheet>
 					<group>
 						<group>
-							<field name="name"/>
-							<field name="code" />
+							<field name="name" String="Course Name" />
+							<field name="code" String="Course Code" />
 						</group>
 						<group>
-							<field name='qualification_id' String="Qualification Required" />
-						</group>
-					</group>
-					<group>
-						<group>
-							<field name="education_id" String="Education Stream" />
-							<field name="course_type" />
-						</group>
-						<group>
-							<field name="course_name"/>
-							<field name="course_duration" />
+							<field name="qualification_id" String="Qualification Required" />
+							<field name="univercity_book_ids" widget="many2many_tags" options=
+								"{'no_create_edit':True}" String="Course Books" />
 						</group>
 					</group>
 					<group>
 						<group>
-							<field name="course_fees" />
+							<field name="education_id" String="Education Stream"/>
+							<field name="course_type" String="Course Type" />
 						</group>
 						<group>
-							<field name="course_time" />
+							<field name="course_name" String="Course Full Name" />
+							<field name="course_duration" String="Course Duration" />
+						</group>
+					</group>
+					<group>
+						<group>
+							<field name="course_fees" String="Course Fees" />
+						</group>
+						<group>
+							<field name="course_time" String="Course Time" />
 						</group>
 					</group>
 				</sheet>
@@ -69,7 +72,6 @@
 	</record>
 
 	<menuitem action="univercity_course_action"
-			id="menu_sample_module_5" parent="Univercity.menu_student_application_config"
-			name="Univercity Course"
-			sequence="15" />
+			id="menu_sample_module_5" parent="Univercity.menu_univercity_application_config"
+			name="Univercity Course" sequence="7" />
 </odoo>

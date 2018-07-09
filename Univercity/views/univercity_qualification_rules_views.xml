@@ -5,8 +5,8 @@
         <field name="model">qualification.module</field>
         <field name="priority" eval="2"></field>
         <field name="arch" type="xml">
-            <tree string="Qualification Required">
-                <field name="name" String='Qualification Required'/>
+            <tree string="Qualification">
+                <field name="name" String="Qualification"/>
             </tree>
         </field>
     </record>
@@ -14,7 +14,7 @@
         <field name="name">qualification.module.form</field>
         <field name="model">qualification.module</field>
         <field name="arch" type="xml">
-            <form string="Qualification Required" class="o_sale_order">
+            <form string="Qualification" class="o_sale_order">
                 <sheet>
                     <div class="oe_title">
                         <h1>
@@ -22,14 +22,14 @@
                         </h1>
                     </div>                    
                     <group>
-                        <field name="name" String='Qualification Required'/>
+                        <field name="name" String="Qualification"/>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
     <record id="qualification_required_action" model="ir.actions.act_window">
-        <field name="name">Qualification Required</field>
+        <field name="name">Qualification</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">qualification.module</field>
         <field name="view_type">form</field>
@@ -40,7 +40,7 @@
         </field>
     </record>
     <menuitem action="qualification_required_action"
-            id="menu_sample_module_7" parent="Univercity.menu_student_application_config"
-            name="Qualification Required"
+            id="menu_sample_module_8" parent="Univercity.menu_univercity_application_config"
+            name="Qualification"
             sequence="11" />
 </odoo>
