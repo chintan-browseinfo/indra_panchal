@@ -12,6 +12,7 @@
 				<field name="course_name"/>
 				<field name="education_id" String="education Stream" />
 				<field name="course_duration"/>
+				<field name='qualification_id' String="Qualification Required" invisible='1' />
 				<field name="course_fees" />
 				<field name="course_time" />
 			</tree>
@@ -26,9 +27,10 @@
 					<group>
 						<group>
 							<field name="name"/>
+							<field name="code" />
 						</group>
 						<group>
-							<field name="code" />
+							<field name='qualification_id' String="Qualification Required" />
 						</group>
 					</group>
 					<group>

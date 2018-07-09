@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+    <record id="view_qualification_required_tree" model="ir.ui.view">
+        <field name="name">qualification.module.tree</field>
+        <field name="model">qualification.module</field>
+        <field name="priority" eval="2"></field>
+        <field name="arch" type="xml">
+            <tree string="Qualification Required">
+                <field name="name" String='Qualification Required'/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_qualification_required_form" model="ir.ui.view">
+        <field name="name">qualification.module.form</field>
+        <field name="model">qualification.module</field>
+        <field name="arch" type="xml">
+            <form string="Qualification Required" class="o_sale_order">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>                    
+                    <group>
+                        <field name="name" String='Qualification Required'/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="qualification_required_action" model="ir.actions.act_window">
+        <field name="name">Qualification Required</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">qualification.module</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+            </p>
+        </field>
+    </record>
+    <menuitem action="qualification_required_action"
+            id="menu_sample_module_7" parent="Univercity.menu_student_application_config"
+            name="Qualification Required"
+            sequence="11" />
+</odoo>

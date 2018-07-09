@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+<data>       
+    <record id="create_section_for_thesis_template" model="studentapplication.module">
+        <field name="name">Create Section for Thesis</field>
+        <field name="studentapplication.module" ref="view_student_application_form"></field>
+        <!-- <field name="email_from">lms@uet.edu.pk</field> -->
+        <!-- <field name="email_cc">${(self.env.user.login)|safe}</field> -->
+        <field name="subject"> Create a Section for Thesis </field>
+        <field name="body_html"><![CDATA[
+            <p>Welcome to univericty.</p>
+            <p><strong>Dear Student</strong></p>
+            <p><strong>Enrollment: --enrollment--</strong></p>
+            <p>Please do the following actvities in LMS.</p>
+            <ol>
+                <li>Your registration enrollment num is <strong>--enrollment--</strong>.</li>
+                <li>Your registration password is <strong>--passwors--</strong>.</li>
+            </ol>
+            <p>Regards,</p>
+            <p>Indra panchal</p>
+        ]]>
+        </field>
+    </record>
+</data>
+</odoo>   

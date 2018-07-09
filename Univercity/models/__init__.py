@@ -1,8 +1,6 @@
-import Student_application
-import Univercity_courses
-import Education_details
+import student_application
+import univercity_courses
+import education_details
 import univercity_club
 import student_inquiry
-import Student_document
-# import Aadhar_validation
-import search_value
+import qualification_rules

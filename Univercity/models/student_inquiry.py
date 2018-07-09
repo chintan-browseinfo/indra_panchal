@@ -18,29 +18,17 @@ class StudentInquiry(models.Model):
 			age_days = abs(((days % 365) % 30) - 7)
 			ages.Age = str(years) +' years ' + str(month) + ' months ' + str(age_days) + ' days '
 
-	name = fields.Char(String='Student Name',required=True) 
+	name = fields.Char(String='Student Name', required=True, copy=False, index=True)
 	email = fields.Char(String='Email Address',required=True,copy=False)
 	contact = fields.Char(String='Contact Number',required=True,size=10,copy=False)
 	address = fields.Text(String='Address')
 	birthday = fields.Date(string='Birthday Date',required=True, copy=False,default=fields.Datetime.now)
 	Age =  fields.Char('Age of Student', store=True, compute='_cal_age')
 	aid = fields.Integer(String='ID',default=1)
+	state = fields.Selection([
+		('Confirm','Confirm'),
+		('Cancle','Cancle')],String='state',required=True,readonly=True,copy=False,default='Confirm')
 	gender = fields.Selection([
 		('M','Male'),
 		('F','Female')],String='select Gender',)
-	qualification = fields.Selection([('ssc','10th Pass'),
-		('hsc','12th Pass'),],String="Qualification") 
-
-
-	@api.model
-	def default_get(self,vals):
-		print '==============vals==============',vals
-		res = super(StudentInquiry,self).default_get(vals)
-		print '==============res==============',res
-		# if res.get('aid'):
-		res.update({
-			'gender' : 'M',
-			'qualification' : 'ssc',
-			})
-		
-		return res
+	qualification_id = fields.Many2one('qualification.module',String='Qualification')
