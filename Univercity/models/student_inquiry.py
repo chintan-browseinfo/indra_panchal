@@ -31,4 +31,5 @@ class StudentInquiry(models.Model):
 	gender = fields.Selection([
 		("M","Male"),
 		("F","Female")],String="select Gender",)
-	qualification_id = fields.Many2one("qualification.module",String="Qualification")
+	qualification_id = fields.Many2one('qualification.module',String="Qualification")
+	achievement_ids = fields.One2many('studentachievement.module','achievement_id',String="Achievement")

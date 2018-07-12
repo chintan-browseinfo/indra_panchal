@@ -7,12 +7,14 @@
 	'description':"""Online admission unvercity portal
 	""",
 	'website':'https://www.browseinfo.in',
-	'depends':['sale','mail'],
+	'depends':['sale'],
 	'data':[
+		'wizard/univercity_wizard_inquiry_views.xml',
 		'views/univercity_application_details_views.xml', 
 		'views/univercity_club_views.xml',
 		'views/univercity_courses_views.xml',
 		'views/univercity_education_stream_views.xml',
+		'views/univercity_student_achievement_views.xml',
 		'views/univercity_inquiry_details_views.xml',
 		'views/univercity_library_management_views.xml',
 		'views/univercity_qualification_rules_views.xml',

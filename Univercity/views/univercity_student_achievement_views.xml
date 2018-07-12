@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+    <record id="view_student_achievement_tree" model="ir.ui.view">
+        <field name="name">studentachievement.module.tree</field>
+        <field name="model">studentachievement.module</field>
+        <field name="priority" eval="2"></field>
+        <field name="arch" type="xml">
+            <tree string="Student Achievement">
+                <field name="name" String="Student Achievement"/>
+                <field name="achievement_id" String="Achievement Name" invisible='1'/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_student_achievement_form" model="ir.ui.view">
+        <field name="name">studentachievement.module.form</field>
+        <field name="model">studentachievement.module</field>
+        <field name="arch" type="xml">
+            <form string="Student Achievement" class="o_sale_order">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>                    
+                    <group>
+                        <field name='name' String="Achievement Name" />
+                        <field name='achievement_id' invisible='1' /> 
+                    </group>
+                    <group>
+                        <field name="achievement_level" String="Achievement Level" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="student_achievement_action" model="ir.actions.act_window">
+        <field name="name">Student Achievement</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">studentachievement.module</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+            </p>
+        </field>
+    </record>
+    <menuitem action="student_achievement_action"
+            id="menu_sample_module_10" parent="Univercity.menu_student_application_config"
+            name="Student Achievement"
+            sequence="12" />
+</odoo>
