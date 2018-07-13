@@ -51,14 +51,20 @@
 						<field name="qualification_id" String="Qualification" />
 					</group>
 				</group>
-				<group Name="Student Achievement">
-					<field name="achievement_ids" >    
-						<tree editable="bottom">
-							<field name="name" String="Student Achievement"/>
-							<field name="achievement_level" String="Achievement level" />
-						</tree>
-					</field>
-				</group>
+				<notebook>
+				<page String="Sports Achievement" >
+					<group Name="Student Achievement">
+						<field name="achievement_ids" String="Sports Achievement">  
+							<tree editable="bottom">
+								<field name="name" />
+								<field name="sports_name" String="Sports Name"/>
+								<field name="sport_achievement" 
+									String="Sports achievement level" />
+							</tree>
+						</field>
+					</group>
+				</page>
+				</notebook>
 			</sheet>
 			</form>
 		</field>

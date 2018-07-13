@@ -61,7 +61,7 @@ class StudentApplication(models.Model):
 	liesence = fields.Boolean(String="Liesence")
 
 	enroll_id = fields.Char(String="Enrollment Number", index=True)
-	password  = fields.Char()
+	password  = fields.Char(String="password")
 
 	@api.multi
 	def confirm_progressbar(self):

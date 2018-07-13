@@ -21,7 +21,8 @@ class ChangeAchievement(models.TransientModel):
 			val.append({
 				'achievement_id' : i.achievement_id.id,
 				'name' : i.name,
-				'achievement_level' : i.achievement_level,
+				'sports_name' : i.sports_name,
+				'sport_achievement' : i.sport_achievement,
 				})
 
 		res['change_achievement_ids'] = val	
@@ -40,23 +41,47 @@ class ChangeAchievement(models.TransientModel):
 			else:
 				self.env['studentinquiry.module'].create(values)		
 		if self.env.context.get('active_model') == 'studentinquiry.module':
-			for order in self.env['studentinquiry.module'].browse(self.env.context.get('active_ids', [])):
-				order.achievement_ids._update_value(confirm=True)		
+			reg = self.env['studentinquiry.module'].browse(self.env.context.get('active_ids', []))
+			value=[]
+			val=[]
+			for i in reg.achievement_ids:
+				val.append(i.id)
+			k=0
+			for j in self.change_achievement_ids:
+				if k>=len(val):
+					value.append([0,0,{
+						'name' : j.name,
+						'sports_name' : j.sports_name,
+						'sport_achievement' : j.sport_achievement,}
+						])
+				else:
+					print"========jjjjjjjjjjjjjjjjj==========",j.name
+					value.append([1,val[k],{
+						'name':j.name,
+						'sports_name' : j.sports_name,
+						'sport_achievement':j.sport_achievement,}])
+				k=k+1	
+			print "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv",value
+			reg.achievement_ids = value
 		return
-		
-		
+
 
 class ChangeInquiryAchievement(models.TransientModel):
 	_name = 'changeachievement.module'
 
 	editor_id = fields.Many2one('change.inquiry.achievement')	
 	achievement_id = fields.Many2one('studentinquiry.module')
-	name = fields.Char(String='Name of Achievemnet')
-	achievement_level = fields.Selection((('taluka','taluka'),
-		('jila','jila'),
-		('state','state'),
-		('national','national'),
-		('international','international')),String="Achievement Level")
+	name = fields.Char(String='Competition Name')
+	sports_name = fields.Selection((('Kho-Kho','Kho-Kho'),
+		('Kabbadi','Kabbadi'),
+		('Football','Football'),
+		('Cricket','Cricket'),
+		('Chess','Chess'),
+		('Hockey','Hockey')),String="Sports Name")
+	sport_achievement = fields.Selection((('district','District'),
+		('domestic','Domestic'),
+		('national','National'),
+		('international','International')),String="Sports achievement level")
 
 	@api.multi
 	def get_registration_data(self):
@@ -65,18 +90,6 @@ class ChangeInquiryAchievement(models.TransientModel):
 			'editor_id':self.editor_id.id,
 			'achievement_id':self.achievement_id.id,
 			'name' : self.name,
-			'achievement_level' : self.achievement_level,
+			'sports_name' : self.sports_name,
+			'sport_achievement' : self.sport_achievement,
 		}
-
-
-	# @api.multi
-	# def _update_val(self):
-	# 	Reg = self.env['change.inquiry.achievement'].browse(self._context.get('active_id'))
-	# 	print "Reg====================================",Reg
-	# 	for so_line in self.filtered('editor_id'):
-	# 		print "so_line=====================",so_line,so_line.name,so_line.achievement_level	
-	# 		registration = {}
-	# 		# registration['achievement_id'] = so_line.achievement_id
-	# 		registration['name'] = so_line.name
-	# 		registration['achievement_level'] = so_line.achievement_level
-	# 	return

@@ -32,4 +32,4 @@ class StudentInquiry(models.Model):
 		("M","Male"),
 		("F","Female")],String="select Gender",)
 	qualification_id = fields.Many2one('qualification.module',String="Qualification")
-	achievement_ids = fields.One2many('studentachievement.module','achievement_id',String="Achievement")
+	achievement_ids = fields.One2many('studentachievement.module','achievement_id',String="Sports Achievement")

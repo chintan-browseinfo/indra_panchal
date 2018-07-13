@@ -84,6 +84,8 @@
 					<group>
 						<field name="enroll_id" String="Enrollment Number" />
 						<field name="password" String="Password" />
+						<button string="Generate password" type="action" state="password" name="%(action_view_change_password)d" 
+							 	class="oe_highlight" attrs="{'invisible':[('state','=','confirm')]}"/>
 					</group>
 				</page>
 			</notebook>
