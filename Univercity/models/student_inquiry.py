@@ -33,3 +33,11 @@ class StudentInquiry(models.Model):
 		("F","Female")],String="select Gender",)
 	qualification_id = fields.Many2one('qualification.module',String="Qualification")
 	achievement_ids = fields.One2many('studentachievement.module','achievement_id',String="Sports Achievement")
+	sequence_inq_id = fields.Char('Sequence', index=True, readonly=True)
+
+
+	@api.model
+	def create(self,vals):
+		seq = self.env['ir.sequence'].next_by_code('hr.stu.employee') or '/'
+		vals['sequence_inq_id'] = seq
+		return super(StudentInquiry, self).create(vals)

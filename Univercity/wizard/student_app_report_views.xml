@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_print_app" model="ir.ui.view">
+		<field name="name">Change Password</field>
+		<field name="model">print.module</field>
+		<field name="arch" type="xml">
+			<form string="Change Password">
+				<p class="oe_grey">
+				</p>
+				<group>
+					<field name="student_id" />
+					<field name="name" String="Student Name" />
+					<field name="contact" String="Contact" />
+					<field name="email" String="Email" />
+					<field name="qualification_id" String="Qualification"/>
+				</group>
+				<footer>
+					<button name="_print_report" string="Print Inquiry" 
+						type="object" class="btn-primary"/>
+					<button string="Cancel" class="btn-default" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+	<template id="report_salesperson">
+      	<t t-call="report.html_container">
+          	<t t-foreach="docs" t-as="o">
+              	<t t-call="report.internal_layout">
+                  	<div class="page">
+                      <!--  report design code goes here -->
+                  	</div>
+              	</t>
+          </t>
+       </t>
+    </template>
+	<record id="action_view_print_app" model="ir.actions.act_window">
+		<field name="name">Student Application Report</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">print.module</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">form</field>
+		<field name="target">new</field>
+	</record>
+</odoo>

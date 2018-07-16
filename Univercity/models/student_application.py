@@ -10,15 +10,15 @@ class StudentApplication(models.Model):
 	_description = "Student application Module"
 
 	student_id = fields.Many2one("studentinquiry.module",required=True,track_visibility="onchange")
-	name = fields.Char(related="student_id.name")
-	contact = fields.Char(related="student_id.contact")
-	email = fields.Char(related="student_id.email")
-	address = fields.Text(related="student_id.address")
-	birthday = fields.Date(related="student_id.birthday")
-	Age =  fields.Char(related="student_id.Age")
-	gender = fields.Selection(related="student_id.gender")
-	qualification_id = fields.Many2one("qualification.module",String="Qualification")
-	education_id = fields.Many2one("education.module",String="Education Stream")
+	name = fields.Char(store=True, related="student_id.name")
+	contact = fields.Char(store=True, related="student_id.contact")
+	email = fields.Char(store=True, related="student_id.email")
+	address = fields.Text(store=True, related="student_id.address")
+	birthday = fields.Date(store=True, related="student_id.birthday")
+	Age =  fields.Char(store=True, related="student_id.Age")
+	gender = fields.Selection(store=True, related="student_id.gender")
+	qualification_id = fields.Many2one("qualification.module",String="Qualification",related="student_id.qualification_id")
+	education_id = fields.Many2one("education.module",String="Education Stream", related="qualification_id.education_id")
 
 	state = fields.Selection([
 			("confirm", "confirm"),
@@ -53,7 +53,7 @@ class StudentApplication(models.Model):
 		fees.total_fees = fees_bucket
 
 	student_club_ids = fields.Many2many("univercityclub.module", "stu_uniclub_rel", "student_club_id","uniclub_id",String="Student Club")
-	total_fees = fields.Char(compute="_cal_fees",store=True )
+	total_fees = fields.Char(compute="_cal_fees",store=True,track_visibility='always')
 
 	aadharid = fields.Boolean(String="Aadhar Card")
 	aadharnumber = fields.Char(String="Aadhar Number")
@@ -63,6 +63,8 @@ class StudentApplication(models.Model):
 	enroll_id = fields.Char(String="Enrollment Number", index=True)
 	password  = fields.Char(String="password")
 
+	sequence_id = fields.Char('Sequence',index=True, readonly=True)
+	
 	@api.multi
 	def confirm_progressbar(self):
 		self.write({
@@ -136,6 +138,9 @@ class StudentApplication(models.Model):
 			# print "============aadharid====create=========",vals.get("aadharid")
 			if val_id:
 				raise ValidationError(_("Configuration error!\naadhar already exists."))		
+
+		seq = self.env['ir.sequence'].next_by_code('hr.employee') or '/'
+		vals['sequence_id'] = seq
 
 		student = super(StudentApplication,self).create(vals)
 		return student

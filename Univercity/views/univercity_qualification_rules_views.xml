@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
             <tree string="Qualification">
                 <field name="name" String="Qualification"/>
+                <field name="education_id" String="Education Stream"/>
             </tree>
         </field>
     </record>
@@ -23,6 +24,9 @@
                     </div>                    
                     <group>
                         <field name="name" String="Qualification"/>
+                    </group>
+                    <group>
+                        <field name="education_id" String="Education Stream"/>
                     </group>
                 </sheet>
             </form>
@@ -41,6 +45,6 @@
     </record>
     <menuitem action="qualification_required_action"
             id="menu_sample_module_8" parent="Univercity.menu_univercity_application_config"
-            name="Qualification"
+            name="Qualificatio Details"
             sequence="11" />
 </odoo>

@@ -7,7 +7,7 @@
 		<field name="arch" type="xml">
 			<tree string="Education Stream">
 				<field name="name" String="Education Stream Name" />                              
-				<field name="library_edu_book_ids" invisible='1' String="Education Related Books" />
+				<!-- <field name="library_edu_book_ids" invisible='1' String="Education Related Books" /> -->
 			</tree>
 		</field>
 	</record>
@@ -21,15 +21,13 @@
 						<h1>
 							<field name="name" readonly='1' String="Education Stream Name" />
 						</h1>
-					</div>                    
+					</div>  
 					<group>
-						<group>
+						<field name="name" String="Education Stream Name" />
+					</group>                  
+						<!-- <group>
 							<field name="library_edu_book_ids" widget="many2many_tags" options="{'no_create_edit': True}" String="Education Related Books" />
-						</group>
-						<group>
-							<field name="name" String="Education Stream Name" />
-						</group>
-					</group>
+						</group> -->
 				</sheet>
 			</form>
 		</field>

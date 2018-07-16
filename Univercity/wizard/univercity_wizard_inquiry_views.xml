@@ -24,7 +24,13 @@
 			</form>
 		</field>
 	</record>
-
+<!-- 	<act_window id="new_achievement_id"
+		name="Change Achievement"
+		src_model="studentinquiry.module"
+		res_model="change.inquiry.achievement"
+		view_type="form" view_mode="form"
+		key2="client_action_malti" target="new"
+		/> -->
 	<record id="action_view_change_achievement" model="ir.actions.act_window">
 		<field name="name">Change Achievement Inquiry</field>
 		<field name="type">ir.actions.act_window</field>

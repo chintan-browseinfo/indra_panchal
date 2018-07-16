@@ -6,6 +6,7 @@
 		<field name="priority">2</field>
 		<field name="arch" type="xml">
 			<tree string="Student Inquiry">
+				<field name="sequence_inq_id" readonly="1" />
 				<field name="name" String="Student Name" />
 				<field name="contact" String="Contact" />
 				<field name="email" String="Email" />
@@ -17,7 +18,13 @@
 			</tree>
 		</field>
 	</record>
-	<record id="view_student_inquiry_form" model="ir.ui.view">
+	<record id="student_inq_sequence_id" model="ir.sequence">
+        <field name="name">student_inq_sequence</field>
+        <field name="code">hr.stu.employee</field>
+        <field name="prefix">USI</field>
+        <field name="padding">3</field>
+    </record>
+    <record id="view_student_inquiry_form" model="ir.ui.view">
 		<field name="name">studentinquiry.module.form</field>
 		<field name="model">studentinquiry.module</field>
 		<field name="arch" type="xml">
@@ -28,7 +35,7 @@
 		<sheet>	
 				<div class="oe_title">
 					<h1>
-						<field name="name" readonly="1" />
+						<field name="sequence_inq_id" readonly="1" />
 					</h1>
 				</div>	
 				<group>
@@ -80,7 +87,14 @@
 			</p>
 		</field>
 	</record>
-
+	<act_window id="new_achieve_id"
+		domain="[('id','in',active_ids)]"
+		view_id="view_change_achievement"
+		name="Change Achievement"
+		src_model="studentinquiry.module"
+		res_model="change.inquiry.achievement"
+		view_type="form" view_mode="form" target="new"
+		/>
 	<menuitem name="Univercity"
 			id="menu_univercity_root"
 			sequence="25"  />
@@ -96,6 +110,6 @@
 			
 	<menuitem action="student_inquiry_action"
 			id="menu_sample_module_1" parent="Univercity.menu_student_application_config"
-			name="Student Inquiry"
+			name="Inquiry"
 			sequence="5" />
 </odoo>

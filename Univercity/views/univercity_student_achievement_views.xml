@@ -45,8 +45,8 @@
             </p>
         </field>
     </record>
-    <menuitem action="student_achievement_action"
+<!--     <menuitem action="student_achievement_action"
             id="menu_sample_module_10" parent="Univercity.menu_student_application_config"
-            name="Student Achievement"
-            sequence="12" />
+            name="Achievement"
+            sequence="12" /> -->
 </odoo>

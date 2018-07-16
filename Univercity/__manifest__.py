@@ -11,6 +11,8 @@
 	'data':[
 		'wizard/univercity_wizard_inquiry_views.xml',
 		'wizard/student_create_password_views.xml',
+		# 'wizard/student_app_report_views.xml',
+		# 'report/inquiry_report_views.xml',
 		'views/univercity_inquiry_details_views.xml',
 		'views/univercity_education_stream_views.xml',
 		'views/univercity_club_views.xml',
@@ -19,6 +21,7 @@
 		'views/univercity_library_management_views.xml',
 		'views/univercity_courses_views.xml',
 		'views/univercity_application_details_views.xml', 
+		'views/univercity_book_issues_views.xml',
 		],
 	'demo':[],
 	'css':[],
