@@ -23,7 +23,7 @@ class UnivercityCourses(models.Model):
 	course_time = fields.Selection((("Full Time","Full Time"),
 		("Part Time","Part Time")),String="Course Time",required=True)
 	
-	univercity_book_ids = fields.Many2many("library.module","library_univercity_rel","univercity_book_id","library_book_id",String="Book Name")		
+	univercity_book_ids = fields.Many2many("book.module","library_univercity_rel","univercity_book_id","library_book_id",String="Book Name")		
 	@api.model
 	def name_search(self, name="", args=None, operator="ilike", limit=100):
 		args = args or []

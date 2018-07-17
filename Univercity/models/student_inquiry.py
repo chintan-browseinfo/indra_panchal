@@ -6,7 +6,6 @@ class StudentInquiry(models.Model):
 
 	@api.depends("birthday")
 	def _cal_age(self):
-
 		for ages in self:
 			if not ages.birthday:
 				return

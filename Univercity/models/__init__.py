@@ -1,9 +1,10 @@
-import education_details
-import library_management
-import qualification_rules
+import student_achievement
 import student_application
+import student_book_issue
 import student_inquiry
 import univercity_club
 import univercity_courses
-import student_achievement
-import student_book_issue
+import univercity_education_details
+import univercity_library_management
+import univercity_qualification_rules
+import book_manage

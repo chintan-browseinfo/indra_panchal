@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 	<record id="student_sequence_id" model="ir.sequence">
-        <field name="name">student_sequence</field>
-        <field name="code">hr.employee</field>
-        <field name="prefix">UNS</field>
-        <field name="padding">3</field>
-    </record>
+		<field name="name">student_sequence</field>
+		<field name="code">hr.employee</field>
+		<field name="prefix">UNS</field>
+		<field name="padding">3</field>
+	</record>
 	<record id="view_student_application_tree" model="ir.ui.view">
 		<field name="name">studentapplication.module.tree</field>
 		<field name="model">studentapplication.module</field>
@@ -26,66 +26,66 @@
 			</tree>
 		</field>
 	</record>
-    <record model="ir.ui.view" id="view_sale_order_graph">
-	    <field name="name">studentapplication.module.graph</field>
-	    <field name="model">studentapplication.module</field>
-	    <field name="arch" type="xml">
-	        <graph string="Student Application">
+	<record model="ir.ui.view" id="view_sale_order_graph">
+		<field name="name">studentapplication.module.graph</field>
+		<field name="model">studentapplication.module</field>
+		<field name="arch" type="xml">
+			<graph string="Student Application">
 			<field name="student_id" String="Student Name"/>
-	        </graph>
-	    </field>
-    </record>
-    <record model="ir.ui.view" id="view_sale_order_pivot">
-        <field name="name">studentapplication.module.pivot</field>
-        <field name="model">studentapplication.module</field>
-        <field name="arch" type="xml">
-            <pivot string="Student Application">
+			</graph>
+		</field>
+	</record>
+	<record model="ir.ui.view" id="view_sale_order_pivot">
+		<field name="name">studentapplication.module.pivot</field>
+		<field name="model">studentapplication.module</field>
+		<field name="arch" type="xml">
+			<pivot string="Student Application">
 				<field name="student_id" String="Student Name"/>
-            </pivot>
-        </field>
-    </record>
+			</pivot>
+		</field>
+	</record>
 	<record model="ir.ui.view" id="view_sale_order_kanban">
-	    <field name="name">studentapplication.module.kanban</field>
-	    <field name="model">studentapplication.module</field>
-	    <field name="arch" type="xml">
-	        <kanban class="o_kanban_mobile">
+		<field name="name">studentapplication.module.kanban</field>
+		<field name="model">studentapplication.module</field>
+		<field name="arch" type="xml">
+			<kanban class="o_kanban_mobile">
 			<field name="student_id" String="Student Name"/>
 			<field name="contact" String="Contact Number"/>
 			<field name="gender" String="Gender"/>                
 			<field name="birthday" String="Birthday"/>				
-	        <templates>
+			<templates>
 			<t t-name="kanban-box">
-                <div t-attf-class="oe_kanban_card oe_kanban_global_click">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <strong>
-                            <span>
-                            	<t t-esc="record.student_id.value"/>
-                            </span>
-                        	</strong>
-                        </div>
-                        <div class="col-xs-6 pull-right text-right">
-                            <strong>
-                            	<field name="contact"/>
-                        	</strong>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <strong>
-                            <span>
-                            	<t t-esc="course_id"/>
-                            </span> 
-                        	</strong>
-                        </div>
-                        <div class="col-xs-6 pull-right text-right">
-                            <strong>
-                            	<field name="enroll_id"/>
-                        	</strong>
-                        </div>
-                    </div>
-                </div>
-            </t>
+				<div t-attf-class="oe_kanban_card oe_kanban_global_click">
+					<div class="row">
+						<div class="col-xs-6">
+							<strong>
+							<span>
+								<t t-esc="record.student_id.value"/>
+							</span>
+							</strong>
+						</div>
+						<div class="col-xs-6 pull-right text-right">
+							<strong>
+								<field name="contact"/>
+							</strong>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-6">
+							<strong>
+							<span>
+								<t t-esc="course_id"/>
+							</span> 
+							</strong>
+						</div>
+						<div class="col-xs-6 pull-right text-right">
+							<strong>
+								<field name="enroll_id"/>
+							</strong>
+						</div>
+					</div>
+				</div>
+			</t>
 			</templates>
 			</kanban>
 		</field>
@@ -156,7 +156,7 @@
 						<field name="enroll_id" String="Enrollment Number" />
 						<field name="password" String="Password" />
 						<button string="Generate password" type="action" state="password" name="%(action_view_change_password)d" 
-							 	class="oe_highlight" attrs="{'invisible':[('state','=','confirm')]}"/>
+								class="oe_highlight" attrs="{'invisible':[('state','=','confirm')]}"/>
 					</group>
 				</page>
 			</notebook>
@@ -164,6 +164,22 @@
 		</form>
 		</field>
 	</record>
+	<!-- <record id="view_food_search" model="ir.ui.view">
+		<field name="name">view.food.search</field>
+		<field name="model">food.detail1</field>
+		<field name="arch" type="xml">
+			<search string="Search Food">
+				<filter  domain="[('food_type','=','p')]"/>
+				<filter  domain="[('food_type','=','g')]"/>
+				<filter  domain="[('food_type','=','k')]"/>
+				<filter  domain="[('food_type','=','c')]"/>
+				<filter  domain="[('food_type','=','m')]"/>
+				<group expand="0" name="group_by" string="Group By">
+				   <filter context="{'group_by' : 'food_type'}"/>
+				</group>
+			</search>
+		</field>
+	</record> -->
 	<record model="ir.actions.act_window" id="student_application_action">
 		<field name="name">Student Application</field>
 		<field name="type">ir.actions.act_window</field>

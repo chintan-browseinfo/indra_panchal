@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_book_issue_tree" model="ir.ui.view">
+	<field name="name">book.issue.tree</field>
+	<field name="model">book.issue.module</field>
+	<field name="priority" eval="2"></field>
+	<field name="arch" type="xml">
+		<tree string="Library">
+			<field name="student_name_id" string="Name"/>
+			<field name="contact" string="Contact"/>
+			<field name="qualification_id" string="Qualification"/>
+			<field name="education_id" string="Education"/>
+			<field name="course_id" string="Course"/>
+		</tree>
+	</field>
+	</record>
+	<record id="view_book_issue_form" model="ir.ui.view">
+		<field name="name">book.issue.form</field>
+		<field name="model">book.issue.module</field>
+		<field name="arch" type="xml">
+			<form string="Library" class="o_sale_order">
+				<sheet>
+					<div class="oe_title">
+						<h1>
+							<field name="name" readonly="1"/>
+						</h1>
+					</div>                    
+					<group>
+						<group>
+							<field name="student_name_id" string="Name"/>
+							<field name="qualification_id" string="Qualification"/>
+							<field name="course_id" string="Course"/>
+						</group>
+						<group>
+							<field name="contact" string="Contact"/>
+							<field name="education_id" string="Education"/>
+							<field name="course_name" string="Course Full Name"/>
+						</group>
+					</group>
+					<group>
+						<group>
+							<field name="book_type"/>
+						</group>
+					</group>
+					<notebook>
+						<page string="Book Rent Details" attrs="{
+							'invisible':[('book_type','=','sold')]
+							}">
+							<group>								
+								<field name="rent_book_ids">
+									<tree editable="bottom">
+										<field name="name_id"/>
+										<field name="book_author"/>
+										<field name="book_publication"/>
+										<field name="purchase_quantity" readonly="True"/>
+										<field name="rent_of_book"/>
+										<field name="issue_date"/>
+										<field name="return_date"/>
+										<field name="rent_amount"/>
+									</tree>
+								</field>
+							</group>
+						</page>
+						<page string="Book Purchase Details" attrs="{
+							'invisible':[('book_type','!=','sold')]
+							}">
+							<group>								
+								<field name="issued_book_ids">
+									<tree editable="bottom">
+										<field name="name_id"/>
+										<field name="book_author"/>
+										<field name="book_publication"/>
+										<field name="book_price"/>
+										<field name="purchase_quantity"/>
+										<field name="amount_bill"/>
+									</tree>
+								</field>
+							</group>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="book_issue_action" model="ir.actions.act_window">
+		<field name="name">Library</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">book.issue.module</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,kanban,form</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+			</p>
+		</field>
+	</record>
+	<menuitem action="book_issue_action"
+			id="menu_sample_module_8" parent="Univercity.menu_student_application_config"
+			name="Library"
+			sequence="9"/>
+</odoo>

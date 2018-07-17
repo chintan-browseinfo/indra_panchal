@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<record id="view_library_tree" model="ir.ui.view">
-	<field name="name">library.module.tree</field>
-	<field name="model">library.module</field>
+	<record id="view_book_tree" model="ir.ui.view">
+	<field name="name">book.module.tree</field>
+	<field name="model">book.module</field>
 	<field name="priority" eval="2"></field>
 	<field name="arch" type="xml">
-		<tree string="Library Management">
-			<field name="name_id" String="Book Name" />
+		<tree string="Book Management">
+			<field name="name" String="Book Name" />
 			<field name="book_author" String="Book Author" />
 			<field name="book_publication" String="Book Publication" />
-			<field name="book_price" String="Book Price" />
-			<field name="book_quantity" String="Book Quantity" />
+			<field name="book_quantity" String="Book Quantity" sum="Total Books"/>
 			<field name="book_availability" String="Book Availability" />
 			<field name="book_sold" String="Book for sale" />
-			<field name="purchase_quantity"/>
+			<field name="book_price" String="Book Price" sum="Total Price"/>
+			<field name="book_type" String='Rent / Sale'/>
+			<field name="rent_of_book" />
 			<!-- <field name="edu_library_book_ids" invisible='1' String="" /> -->
 			<!-- <field name="library_book_ids" invisible='1' String="" /> -->
-			<!-- <field name="library_id" invisible='1' String="" /> -->
 		</tree>
 	</field>
 	</record>
-	<record id="view_library_form" model="ir.ui.view">
-		<field name="name">library.module.form</field>
-		<field name="model">library.module</field>
+	<record id="view_book_form" model="ir.ui.view">
+		<field name="name">book.module.form</field>
+		<field name="model">book.module</field>
 		<field name="arch" type="xml">
-			<form string="Library Management" class="o_sale_order">
+			<form string="Book Management" class="o_sale_order">
 				<sheet>
 					<div class="oe_title">
 						<h1>
@@ -33,30 +33,34 @@
 					</div>                    
 					<group>
 						<group>
-							<field name="name_id" String="Book Name" />
+							<field name="name" String="Book Name" />
 							<field name="book_author" String="Book Author" />
 						</group>
 						<group>
 							<field name="book_publication" String="Book Publication" />
-							<field name="book_price" String="Book Price" />
+							<field name="book_price" String="Book Price" sum="
+								Total Price"/>
 						</group>
 					</group>
 					<group>	
 						<group>
 							<field name="book_availability" String="Book Availability" />	
-							<field name="book_sold" String="Book for sale" />
-							<field name="purchase_quantity"/>
+							<field name="book_quantity"  
+							attrs="{'invisible':[('book_availability','=',False)]}"  
+							String="Book Quantity" />
 						</group>
 						<group>
 							<field name="edu_library_book_ids" widget="many2many_tags" options="{'no_create_edit': True}" String="Available for Stream" />
-							<field name="book_id" invisible='1' String="" />
 						</group>
 					</group>
 					<group>
 						<group>
-							<field name="book_quantity"  
-							attrs="{'invisible':[('book_availability','=',False)]}"  
-							String="Book Quantity" />
+							<field name="book_type" String='Rent / Sale'/>
+							<field name="rent_of_book" attrs="{'invisible':
+								['|',('book_type','=','sold'),('book_type','=',False)]}"/>
+							<field name="book_sold" String="Book for sale" 
+								attrs="{'invisible':
+								['|',('book_type','!=','sold'),('book_type','=',False)]}"/>
 						</group>
 						<group>
 							<field name="library_book_ids" widget="many2many_tags" options="{'no_create_edit': True}" String="Available for Course"/>
@@ -66,10 +70,10 @@
 			</form>
 		</field>
 	</record>
-	<record id="library_action" model="ir.actions.act_window">
-		<field name="name">Library Management</field>
+	<record id="book_action" model="ir.actions.act_window">
+		<field name="name">Book Management</field>
 		<field name="type">ir.actions.act_window</field>
-		<field name="res_model">library.module</field>
+		<field name="res_model">book.module</field>
 		<field name="view_type">form</field>
 		<field name="view_mode">tree,kanban,form</field>
 		<field name="help" type="html">
@@ -77,8 +81,8 @@
 			</p>
 		</field>
 	</record>
-<!-- 	<menuitem action="library_action"
-			id="menu_sample_module_7" parent="Univercity.menu_univercity_extra_application_config"
-			name="Library Management"
-			sequence="9"/> -->
+	<menuitem action="book_action"
+			id="menu_sample_module_10" parent="Univercity.menu_univercity_extra_application_config"
+			name="Book Management"
+			sequence="9"/>
 </odoo>

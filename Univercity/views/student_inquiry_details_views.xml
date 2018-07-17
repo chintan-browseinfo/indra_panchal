@@ -87,6 +87,20 @@
 			</p>
 		</field>
 	</record>
+	<record id="student_inquiry_search" model="ir.ui.view">
+		<field name="name">studentinquiry.module.search</field>
+		<field name="model">studentinquiry.module</field>
+		<field name="arch" type="xml">
+			<search string="Search Food">
+				<filter string="Male" name="gender" domain="[('gender','=','M')]"/>
+				<filter string="Female" name="gender" domain="[('gender','=','F')]"/>
+				<filter string="Qualification" name="qualification_id" domain="[('qualification_id','=','qualification_id')]"/>
+				<group expand="0" name="group_by" string="Group By">
+				   <filter string="Qualification" name="qualification_id" context="{'group_by' : 'qualification_id'}"/>
+				</group>
+			</search>
+		</field>
+	</record>
 	<act_window id="new_achieve_id"
 		domain="[('id','in',active_ids)]"
 		view_id="view_change_achievement"
