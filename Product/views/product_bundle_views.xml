@@ -7,6 +7,16 @@
 		<field name="priority" eval="8" />
 		<field name="inherit_id" ref="product.product_template_form_view"/>
 		<field name="arch" type="xml">
+			<xpath expr="//field[@name='standard_price']" position="after">
+				<group>
+					<field name="compute_price"/>
+				</group>
+			</xpath>			
+			<xpath expr="//field[@name='list_price']" position="attributes">
+				<!-- <attributes name="name">list_price</attributes> -->
+				<attributes name="attrs">{'readonly':[('compute_price','=',True)]}
+				</attributes>
+			</xpath>
 			<xpath expr="//page[@name='sales']" position="after">
 				<page name="product" string="Product Pack" attrs="
 					{'invisible':[('is_pack','!=',True)]}">

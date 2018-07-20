@@ -101,7 +101,8 @@
 			<button string="Generate Login" type="object" state="login" name="enroll_progressbar" 
 				class="oe_highlight" attrs="{'invisible':['|',('state','!=','login'),('state','=','confirm')]}"/>
 			<button string="Generate password" type="object" state="password" name="password_progressbar" class="oe_highlight" attrs="{'invisible':['|',('state','!=','password'),('state','=','confirm')]}"/>
-			<button string="Done" type="object" state="done" name="done_progressbar" />
+			<button name="create_inquiry" string="Create Inquiry" type="object" class="oe_highlight"/>
+			<!-- <button string="Done" type="object" state="done" name="done_progressbar" /> -->
 			<field name="state" widget="statusbar"/>
 		</header>
 		<sheet>

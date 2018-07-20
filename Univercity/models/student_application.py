@@ -6,7 +6,6 @@ import string
 
 class StudentApplication(models.Model):
 	_name = "studentapplication.module"
-	_inherit = "mail.mail"
 	_description = "Student application Module"
 
 	student_id = fields.Many2one("studentinquiry.module",required=True,track_visibility="onchange")
@@ -83,6 +82,17 @@ class StudentApplication(models.Model):
 			self.write({
 				"state":"password"
 				})
+
+	# @api.multi
+	# def create_inquiry(self):
+	# 	res = self.env['studentinquiry.module']
+	# 	self.ensure_one()
+	# 	student = res.create({
+	# 		'name' : 'indra',
+	# 		'contact' : 9974713710,
+	# 		'email' : 'indra@gmail.com',
+ # 			'gender' : 'M',
+	# 		})
 
 	@api.multi
 	@api.depends("password")

@@ -77,8 +77,8 @@
 			</p>
 		</field>
 	</record>
-<!-- 	<menuitem action="library_action"
-			id="menu_sample_module_7" parent="Univercity.menu_univercity_extra_application_config"
+	<menuitem action="library_action"
+			id="menu_sample_module_14" parent="Univercity.menu_univercity_extra_application_config"
 			name="Library Management"
-			sequence="9"/> -->
+			sequence="9"/>
 </odoo>

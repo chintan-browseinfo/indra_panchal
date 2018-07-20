@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 	<record id="view_book_tree" model="ir.ui.view">
-	<field name="name">book.module.tree</field>
-	<field name="model">book.module</field>
-	<field name="priority" eval="2"></field>
-	<field name="arch" type="xml">
+		<field name="name">book.module.tree</field>
+		<field name="model">book.module</field>
+		<field name="priority" eval="2"></field>
+		<field name="arch" type="xml">
 		<tree string="Book Management">
-			<field name="name" String="Book Name" />
-			<field name="book_author" String="Book Author" />
-			<field name="book_publication" String="Book Publication" />
-			<field name="book_quantity" String="Book Quantity" sum="Total Books"/>
-			<field name="book_availability" String="Book Availability" />
-			<field name="book_sold" String="Book for sale" />
-			<field name="book_price" String="Book Price" sum="Total Price"/>
-			<field name="book_type" String='Rent / Sale'/>
+			<field name="sequence_book_id"/>
+			<field name="name"/>
+			<field name="book_author"/>
+			<field name="book_publication"/>
+			<field name="book_type"/>
+			<field name="book_quantity" sum="Total Books"/>
+			<field name="book_price" sum="Total Price"/>
 			<field name="rent_of_book" />
-			<!-- <field name="edu_library_book_ids" invisible='1' String="" /> -->
-			<!-- <field name="library_book_ids" invisible='1' String="" /> -->
+			<field name="book_availability"/>
+			<field name="book_sold"/>	
 		</tree>
-	</field>
+		</field>
 	</record>
 	<record id="view_book_form" model="ir.ui.view">
 		<field name="name">book.module.form</field>
@@ -28,34 +27,37 @@
 				<sheet>
 					<div class="oe_title">
 						<h1>
-							<field name="name" readonly="1" String="Book Name" />
+							<field name="sequence_book_id" readonly="1"/>
 						</h1>
+						<h3>
+							<field name="name" readonly="1" />
+						</h3>
 					</div>                    
 					<group>
 						<group>
-							<field name="name" String="Book Name" />
-							<field name="book_author" String="Book Author" />
+							<field name="name"/>
+							<field name="book_author"/>
 						</group>
 						<group>
-							<field name="book_publication" String="Book Publication" />
-							<field name="book_price" String="Book Price" sum="
+							<field name="book_publication" />
+							<field name="book_price" sum="
 								Total Price"/>
 						</group>
 					</group>
 					<group>	
 						<group>
-							<field name="book_availability" String="Book Availability" />	
+							<field name="book_availability" />	
 							<field name="book_quantity"  
 							attrs="{'invisible':[('book_availability','=',False)]}"  
 							String="Book Quantity" />
 						</group>
 						<group>
-							<field name="edu_library_book_ids" widget="many2many_tags" options="{'no_create_edit': True}" String="Available for Stream" />
+							<field name="edu_library_book_ids" widget="many2many_tags" options="{'no_create_edit': True}" />
 						</group>
 					</group>
 					<group>
 						<group>
-							<field name="book_type" String='Rent / Sale'/>
+							<field name="book_type" />
 							<field name="rent_of_book" attrs="{'invisible':
 								['|',('book_type','=','sold'),('book_type','=',False)]}"/>
 							<field name="book_sold" String="Book for sale" 
@@ -63,7 +65,7 @@
 								['|',('book_type','!=','sold'),('book_type','=',False)]}"/>
 						</group>
 						<group>
-							<field name="library_book_ids" widget="many2many_tags" options="{'no_create_edit': True}" String="Available for Course"/>
+							<field name="library_book_ids" widget="many2many_tags" options="{'no_create_edit': True}" />
 						</group>
 					</group>
 				</sheet>
@@ -79,6 +81,28 @@
 		<field name="help" type="html">
 			<p class="oe_view_nocontent_create">
 			</p>
+		</field>
+	</record>
+	<record id="student_book_id" model="ir.sequence">
+        <field name="name">student_book_sequence</field>
+        <field name="code">hr.book.employee</field>
+        <field name="prefix">BOOK</field>
+        <field name="padding">3</field>	
+	</record>
+	<record id="student_book_search" model="ir.ui.view">
+		<field name="name">book.module.search</field>
+		<field name="model">book.module</field>
+		<field name="arch" type="xml">
+			<search string="Search Book">
+				<filter string="Saleable" name="book_type" domain="[('book_type','=','sold')]"/>
+				<filter string="Rentable" name="book_type" domain="[('book_type','=','rent')]"/>
+				<filter string="Available Books" name="book_availability" domain="[('book_availability','=',True)]"/>
+				<filter string="Not Available Books" name="book_availability" domain="[('book_availability','!=',True)]"/>
+				<group expand="0" name="group_by" string="Group By">
+				   <filter string="Book Quantity" name="book_quantity" context="{'group_by' : 'book_quantity'}"/>
+				   <filter string="Book Availability" name="book_availability" context="{'group_by' : 'book_availability'}"/>
+				</group>
+			</search>
 		</field>
 	</record>
 	<menuitem action="book_action"

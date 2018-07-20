@@ -34,7 +34,6 @@ class StudentInquiry(models.Model):
 	achievement_ids = fields.One2many('studentachievement.module','achievement_id',String="Sports Achievement")
 	sequence_inq_id = fields.Char('Sequence', index=True, readonly=True)
 
-
 	@api.model
 	def create(self,vals):
 		seq = self.env['ir.sequence'].next_by_code('hr.stu.employee') or '/'

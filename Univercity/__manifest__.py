@@ -1,13 +1,12 @@
 {
 	'name':'univercity',
 	'version':'1.0',
-	'category':'Sales',
 	'sequence':120,
 	'summary':'UniverCity Module',
 	'description':"""Online admission unvercity portal
 	""",
 	'website':'https://www.browseinfo.in',
-	'depends':['sale'],
+	'author' :'Indra Panchal',
 	'data':[
 		'wizard/univercity_wizard_inquiry_views.xml',
 		'wizard/student_create_password_views.xml',

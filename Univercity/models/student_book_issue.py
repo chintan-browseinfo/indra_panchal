@@ -18,3 +18,22 @@ class StudentApplication(models.Model):
 		('rent','Rentable'),
 		('sold','Saleable'),),String='Rent / Sale')
 	amount_total = fields.Integer(String='Total Bill')
+
+
+	@api.multi
+	@api.onchange('book_type')
+	def _onchange_book_type(self):
+		d = {}
+		for book in self:
+			if book.book_type == 'sold':
+				res = self.env['book.module'].search([('book_type','=','sold')])
+				print "=====================res1==============",res
+				d['domain'] = {'issued_book_ids.name_id':[('name_id','=',[i.name for i in res])]}
+				print "d========================d1====================d",d
+				return d
+			if book.book_type == 'rent':
+				res = self.env['book.module'].search([('book_type','=','rent')])
+				print "=====================res2==============",res
+				d['domain'] = {'rent_book_ids.name_id':[('name_id','=',[i.name for i in res])]}
+				print "d========================d2================",d
+				return d

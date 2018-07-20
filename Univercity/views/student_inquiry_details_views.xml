@@ -91,7 +91,7 @@
 		<field name="name">studentinquiry.module.search</field>
 		<field name="model">studentinquiry.module</field>
 		<field name="arch" type="xml">
-			<search string="Search Food">
+			<search string="Search Inquiry">
 				<filter string="Male" name="gender" domain="[('gender','=','M')]"/>
 				<filter string="Female" name="gender" domain="[('gender','=','F')]"/>
 				<filter string="Qualification" name="qualification_id" domain="[('qualification_id','=','qualification_id')]"/>
