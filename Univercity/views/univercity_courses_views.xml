@@ -6,16 +6,16 @@
 		<field name="priority">3</field>
 		<field name="arch" type="xml">
 			<tree string="Univercity Course">
-				<field name="name" String="Course Name" />
-				<field name="code" String="Course Code" />
-				<field name="course_type" String="Course Type" />
-				<field name="course_name" String="Course Full Name" />
-				<field name="education_id" String="Education Stream" />
-				<field name="course_duration" String="Course Duration" />
-				<field name="qualification_id" String="Required Qualification" invisible="1"   />
-				<field name="course_fees" String="Course Fees" />
-				<field name="course_time" String="Course Time" />
-				<field name="univercity_book_ids" invisible="1" String="Course Books" /> 
+				<field name="name"/>
+				<field name="code"/>
+				<field name="course_type" />
+				<field name="course_name" />
+				<field name="education_id" />
+				<field name="course_duration" />
+				<field name="qualification_id" invisible="1"   />
+				<field name="course_fees" />
+				<field name="course_time" />
+				<field name="univercity_book_ids" invisible="1"/> 
 			</tree>
 		</field>
 	</record>
@@ -32,31 +32,31 @@
 				</div>
 					<group>
 						<group>
-							<field name="name" String="Course Name" />
-							<field name="code" String="Course Code" />
+							<field name="name" />
+							<field name="code" />
 						</group>
 						<group>
-							<field name="qualification_id" String="Qualification Required" />
+							<field name="qualification_id"/>
 							<field name="univercity_book_ids" widget="many2many_tags" options=
-								"{'no_create_edit':True}" String="Course Books" />
+								"{'no_create_edit':True}" />
 						</group>
 					</group>
 					<group>
 						<group>
-							<field name="education_id" String="Education Stream"/>
-							<field name="course_type" String="Course Type" />
+							<field name="education_id"/>
+							<field name="course_type" />
 						</group>
 						<group>
-							<field name="course_name" String="Course Full Name" />
-							<field name="course_duration" String="Course Duration" />
+							<field name="course_name" />
+							<field name="course_duration"/>
 						</group>
 					</group>
 					<group>
 						<group>
-							<field name="course_fees" String="Course Fees" />
+							<field name="course_fees"/>
 						</group>
 						<group>
-							<field name="course_time" String="Course Time" />
+							<field name="course_time"/>
 						</group>
 					</group>
 				</sheet>

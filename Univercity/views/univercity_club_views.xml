@@ -25,16 +25,16 @@
                 </div>                
                 <group>
                     <group>
-                        <field name="name" String="Club Name" />
+                        <field name="name"/>
                         <field name="univercity_club_ids" invisible="1"/>
                     </group>
                 </group>
                 <group>
                     <group>    
-                        <field name="club_fees" String="Club Fees" />
+                        <field name="club_fees"/>
                     </group>
                     <group>
-                        <field name="club_duration" String="Club Duration" />
+                        <field name="club_duration"/>
                     </group>
                 </group>
                 </sheet>

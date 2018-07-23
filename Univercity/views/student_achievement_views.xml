@@ -6,8 +6,8 @@
         <field name="priority" eval="2"></field>
         <field name="arch" type="xml">
             <tree string="Student Achievement">
-                <field name="name" String='Competition Name'/>
-                <field name="achievement_id" String="Achievement Name" invisible='1'/>
+                <field name="name"/>
+                <field name="achievement_id" invisible='1'/>
             </tree>
         </field>
     </record>
@@ -19,16 +19,16 @@
                 <sheet>
                     <div class="oe_title">
                         <h1>
-                            <field name="name" readonly="1" String='Competition Name'/>
+                            <field name="name" readonly="1"/>
                         </h1>
                     </div>                    
                     <group>
-                        <field name='name' String='Competition Name'/>
+                        <field name='name'/>
                         <field name='achievement_id' invisible='1' /> 
                     </group>
                     <group>
-                        <field name="sports_name" String="Sports Name"/>
-                        <field name="sport_achievement" String="Sports achievement level"/>
+                        <field name="sports_name"/>
+                        <field name="sport_achievement"/>
                     </group>
                 </sheet>
             </form>

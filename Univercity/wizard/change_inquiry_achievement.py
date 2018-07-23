@@ -9,7 +9,7 @@ class ChangeAchievement(models.TransientModel):
 	_name = 'change.inquiry.achievement'
 	_description = 'Change Achievement'
 
-	change_achievement_ids = fields.One2many('changeachievement.module','editor_id',String="Achievement")
+	change_achievement_ids = fields.One2many('changeachievement.module','editor_id')
 
 	@api.model
 	def default_get(self, default_fields):
@@ -71,17 +71,17 @@ class ChangeInquiryAchievement(models.TransientModel):
 
 	editor_id = fields.Many2one('change.inquiry.achievement')	
 	achievement_id = fields.Many2one('studentinquiry.module')
-	name = fields.Char(String='Competition Name')
+	name = fields.Char(string='Competition Name')
 	sports_name = fields.Selection((('Kho-Kho','Kho-Kho'),
 		('Kabbadi','Kabbadi'),
 		('Football','Football'),
 		('Cricket','Cricket'),
 		('Chess','Chess'),
-		('Hockey','Hockey')),String="Sports Name")
+		('Hockey','Hockey')),string="Sports Name")
 	sport_achievement = fields.Selection((('district','District'),
 		('domestic','Domestic'),
 		('national','National'),
-		('international','International')),String="Sports achievement level")
+		('international','International')),string="Sports achievement level")
 
 	@api.multi
 	def get_registration_data(self):

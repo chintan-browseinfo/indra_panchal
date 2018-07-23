@@ -10,7 +10,7 @@ class printreport(models.TransientModel):
 	name = fields.Char()
 	contact = fields.Char()
 	email = fields.Char()
-	qualification_id = fields.Many2one('qualification.module',String="Qualification")
+	qualification_id = fields.Many2one('qualification.module',string="Qualification")
 
 	@api.multi
 	def check_report(self):

@@ -6,8 +6,8 @@
         <field name="priority" eval="2"></field>
         <field name="arch" type="xml">
             <tree string="Qualification">
-                <field name="name" String="Qualification"/>
-                <field name="education_id" String="Education Stream"/>
+                <field name="name"/>
+                <field name="education_id"/>
             </tree>
         </field>
     </record>
@@ -23,10 +23,10 @@
                         </h1>
                     </div>                    
                     <group>
-                        <field name="name" String="Qualification"/>
+                        <field name="name"/>
                     </group>
                     <group>
-                        <field name="education_id" String="Education Stream"/>
+                        <field name="education_id"/>
                     </group>
                 </sheet>
             </form>

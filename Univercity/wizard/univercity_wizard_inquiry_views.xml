@@ -7,13 +7,13 @@
 			<form string="Change Achievement">
 				<p class="oe_grey">
 				</p>
-				<group Name="Student Achievement">
-					<field name="change_achievement_ids" String='Competition Name'>    
-					<tree editable="bottom" delete="false">
-						<field name="name" String="Student Achievement"/>
-							<field name="sports_name" String="Sports Name" />
-							<field name="sport_achievement" String="Sports achievement level"/>
-					</tree>
+				<group>
+					<field name="change_achievement_ids" nolabel="1">    
+						<tree editable="bottom" delete="false">
+							<field name="name"/>
+							<field name="sports_name"/>
+							<field name="sport_achievement"/>
+						</tree>
 					</field>
 				</group>
 				<footer>

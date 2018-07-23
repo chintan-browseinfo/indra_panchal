@@ -10,12 +10,10 @@
 			<field name="name"/>
 			<field name="book_author"/>
 			<field name="book_publication"/>
-			<field name="book_type"/>
+			<field name="book_availability"/>
+			<field name="rent_of_book" />
 			<field name="book_quantity" sum="Total Books"/>
 			<field name="book_price" sum="Total Price"/>
-			<field name="rent_of_book" />
-			<field name="book_availability"/>
-			<field name="book_sold"/>	
 		</tree>
 		</field>
 	</record>
@@ -46,10 +44,7 @@
 					</group>
 					<group>	
 						<group>
-							<field name="book_availability" />	
-							<field name="book_quantity"  
-							attrs="{'invisible':[('book_availability','=',False)]}"  
-							String="Book Quantity" />
+							<field name="book_availability" />
 						</group>
 						<group>
 							<field name="edu_library_book_ids" widget="many2many_tags" options="{'no_create_edit': True}" />
@@ -57,12 +52,10 @@
 					</group>
 					<group>
 						<group>
-							<field name="book_type" />
-							<field name="rent_of_book" attrs="{'invisible':
-								['|',('book_type','=','sold'),('book_type','=',False)]}"/>
-							<field name="book_sold" String="Book for sale" 
-								attrs="{'invisible':
-								['|',('book_type','!=','sold'),('book_type','=',False)]}"/>
+							<field name="rent_of_book"/>
+							<field name="book_quantity"  
+							attrs="{'invisible':[('book_availability','=',False)]}"  
+							String="Book Quantity" />
 						</group>
 						<group>
 							<field name="library_book_ids" widget="many2many_tags" options="{'no_create_edit': True}" />
@@ -94,8 +87,6 @@
 		<field name="model">book.module</field>
 		<field name="arch" type="xml">
 			<search string="Search Book">
-				<filter string="Saleable" name="book_type" domain="[('book_type','=','sold')]"/>
-				<filter string="Rentable" name="book_type" domain="[('book_type','=','rent')]"/>
 				<filter string="Available Books" name="book_availability" domain="[('book_availability','=',True)]"/>
 				<filter string="Not Available Books" name="book_availability" domain="[('book_availability','!=',True)]"/>
 				<group expand="0" name="group_by" string="Group By">

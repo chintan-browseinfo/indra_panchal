@@ -12,17 +12,17 @@
 		<field name="priority">2</field>
 		<field name="arch" type="xml">
 			<tree string="Student Application" >
-				<field name="student_id" String="Student Name"/>
-				<field name="contact" String="Contact Number"/>
-				<field name="email" String="Email Address"/>
-				<field name="gender" String="Gender"/>                
-				<field name="birthday" String="Birthday"/>				
-				<field name="course_name" String="Course Name"/>
-				<field name="total_fees" String="Club Fees" 
+				<field name="student_id"/>
+				<field name="contact"/>
+				<field name="email"/>
+				<field name="gender"/>                
+				<field name="birthday"/>				
+				<field name="course_name"/>
+				<field name="total_fees" 
 					sum="Total Fees" widget="monetary"/>
-				<field name="aadharnumber" String="Addhar Number" />
-				<field name="enroll_id" String="Enrollment Number"/>
-				<field name="password" String="Password"/>
+				<field name="aadharnumber"/>
+				<field name="enroll_id"/>
+				<field name="password"/>
 			</tree>
 		</field>
 	</record>
@@ -31,7 +31,7 @@
 		<field name="model">studentapplication.module</field>
 		<field name="arch" type="xml">
 			<graph string="Student Application">
-			<field name="student_id" String="Student Name"/>
+			<field name="student_id"/>
 			</graph>
 		</field>
 	</record>
@@ -40,7 +40,7 @@
 		<field name="model">studentapplication.module</field>
 		<field name="arch" type="xml">
 			<pivot string="Student Application">
-				<field name="student_id" String="Student Name"/>
+				<field name="student_id"/>
 			</pivot>
 		</field>
 	</record>
@@ -49,10 +49,10 @@
 		<field name="model">studentapplication.module</field>
 		<field name="arch" type="xml">
 			<kanban class="o_kanban_mobile">
-			<field name="student_id" String="Student Name"/>
-			<field name="contact" String="Contact Number"/>
-			<field name="gender" String="Gender"/>                
-			<field name="birthday" String="Birthday"/>				
+			<field name="student_id"/>
+			<field name="contact"/>
+			<field name="gender" />                
+			<field name="birthday"/>				
 			<templates>
 			<t t-name="kanban-box">
 				<div t-attf-class="oe_kanban_card oe_kanban_global_click">
@@ -116,46 +116,46 @@
 			</div>
 			<group>    
 				<group>
-					<field name="student_id" String="Student Name"/>
-					<field name="birthday" String="Birthday"/>
-					<field name="gender" String="Gender" />
-					<field name="qualification_id" String="Qualification" /> 
+					<field name="student_id"/>
+					<field name="birthday"/>
+					<field name="gender" />
+					<field name="qualification_id" /> 
 				</group>
 				<group>
-					<field name="address" String="Home Town"/>
-					<field name="contact" String="Contact Number"/>
-					<field name="email" String="Email Address"/>
-					<field name="Age" invisible="0" String="Student Age"/>
+					<field name="address"/>
+					<field name="contact"/>
+					<field name="email"/>
+					<field name="Age" invisible="0"/>
 				</group>
 			</group>
 			<notebook>
 				<page String="Educational Information">
 					<group>
 						<group>
-							<field name="education_id" String="education Stream" />
-							<field name="student_club_ids" String="Club" widget="many2many_tags" options="{'no_create_edit': True}" />
-							<field name="total_fees" String="Club Fees" />
+							<field name="education_id"/>
+							<field name="student_club_ids" widget="many2many_tags" options="{'no_create_edit': True}" />
+							<field name="total_fees" />
 						</group>
 						<group>
-							<field name="course_id" String="Course" />
-							<field name="course_name" String="Course Name"
+							<field name="course_id"/>
+							<field name="course_name"
 								attrs="{'invisible':[('course_id','=',False)]}"/>
-							<field name="course_time" String="Course Time" 
+							<field name="course_time"
 								attrs="{'invisible':[('course_id','=',False)]}" />
 						</group>
 						<group>							
-							<field name="aadharid" String="Aadhar Card"/>
+							<field name="aadharid"/>
 						</group>
 						<group>
-							<field name="aadharnumber" String="Addhar Number" 
+							<field name="aadharnumber" 
 								attrs="{'invisible':[('aadharid','=',False)]}"/>		
 						</group>
 					</group>
 				</page>
 				<page String="Login Information" >
 					<group>
-						<field name="enroll_id" String="Enrollment Number" />
-						<field name="password" String="Password" />
+						<field name="enroll_id"/>
+						<field name="password" />
 						<button string="Generate password" type="action" state="password" name="%(action_view_change_password)d" 
 								class="oe_highlight" attrs="{'invisible':[('state','=','confirm')]}"/>
 					</group>
@@ -188,6 +188,7 @@
 		<field name="view_type">form</field>
 		<field name="view_mode">tree,kanban,form,pivot,graph</field>
 	</record>
+
 	<act_window id="new_student_id"
 	domain="[('id','in',active_ids)]"
 	view_id="view_change_password"
@@ -196,6 +197,7 @@
 	res_model="changepassword.module"
 	view_type="form" view_mode="form" target="new"
 	/>
+	
 	<menuitem action="student_application_action"
 					id="menu_sample_module_2" parent="Univercity.menu_student_application_config"
 					name="Application"

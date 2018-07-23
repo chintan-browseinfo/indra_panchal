@@ -6,9 +6,9 @@ from odoo.exceptions import UserError
 class Changepassword(models.TransientModel):
 	_name = 'changepassword.module'
 
-	real_password = fields.Char(String="Old Password")
-	create_password = fields.Char(String='Create Password')
-	confirm_password = fields.Char(String='Confirm Password')
+	real_password = fields.Char(string="Old Password")
+	create_password = fields.Char(string='Create Password')
+	confirm_password = fields.Char(string='Confirm Password')
 	
 	@api.model
 	def default_get(self, default_fields):

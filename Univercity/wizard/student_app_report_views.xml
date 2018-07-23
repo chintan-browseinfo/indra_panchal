@@ -9,10 +9,10 @@
 				</p>
 				<group>
 					<field name="student_id" />
-					<field name="name" String="Student Name" />
-					<field name="contact" String="Contact" />
-					<field name="email" String="Email" />
-					<field name="qualification_id" String="Qualification"/>
+					<field name="name"/>
+					<field name="contact"/>
+					<field name="email"/>
+					<field name="qualification_id"/>
 				</group>
 				<footer>
 					<button name="_print_report" string="Print Inquiry" 

@@ -7,14 +7,14 @@
 		<field name="arch" type="xml">
 			<tree string="Student Inquiry">
 				<field name="sequence_inq_id" readonly="1" />
-				<field name="name" String="Student Name" />
-				<field name="contact" String="Contact" />
-				<field name="email" String="Email" />
-				<field name="address" String="Adress" />
-				<field name="birthday" String="Birthday" />
-				<field name="Age" invisible="1" String="Student Age" />
-				<field name="gender" String="Gender" />
-				<field name="qualification_id" String="Qualification"/>
+				<field name="name"/>
+				<field name="contact"/>
+				<field name="email"/>
+				<field name="address" />
+				<field name="birthday" />
+				<field name="Age" invisible="1" />
+				<field name="gender" />
+				<field name="qualification_id"/>
 			</tree>
 		</field>
 	</record>
@@ -40,33 +40,32 @@
 				</div>	
 				<group>
 					<group>
-						<field name="name" String="Student Name" />
-						<field name="gender" String="Gender" />
+						<field name="name" />
+						<field name="gender" />
 					</group>
 					<group>
-						<field name="birthday" String="Birthday" />
-						<field name="Age" String="Student Age" />
+						<field name="birthday" />
+						<field name="Age" />
 					</group>
 				</group>
 				<group>
 					<group>
-						<field name="address" String="Adress" />
-						<field name="contact" String="Contact" />
+						<field name="address" />
+						<field name="contact" />
 					</group>
 					<group>
-						<field name="email" String="Email" />
-						<field name="qualification_id" String="Qualification" />
+						<field name="email"/>
+						<field name="qualification_id" />
 					</group>
 				</group>
 				<notebook>
 				<page String="Sports Achievement" >
-					<group Name="Student Achievement">
-						<field name="achievement_ids" String="Sports Achievement">  
+					<group>
+						<field name="achievement_ids" nolabel="1">  
 							<tree editable="bottom">
 								<field name="name" />
-								<field name="sports_name" String="Sports Name"/>
-								<field name="sport_achievement" 
-									String="Sports achievement level" />
+								<field name="sports_name"/>
+								<field name="sport_achievement" />
 							</tree>
 						</field>
 					</group>

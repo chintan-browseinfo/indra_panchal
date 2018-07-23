@@ -1,8 +1,13 @@
-<report 
-     id="action_report_salesperson"
-     model="report.sales_report.report_salesperson"
-     string="Salesperson report"
-     report_type="qweb-pdf"
-     name="sales_report.report_salesperson"
-     file="sales_report.report_salesperson" 
-/>
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report 
+            id="report_book_bill_order"
+            string="Book Bill"
+            model="book.issue.module" 
+            report_type="qweb-pdf"
+            file="sale.report_saleorder" 
+            name="sale.report_saleorder" 
+        />
+    </data>
+</odoo>
