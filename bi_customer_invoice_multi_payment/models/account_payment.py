@@ -10,28 +10,22 @@ class account_payment(models.Model):
 		""" Create a journal entry corresponding to a payment, if the payment references invoice(s) they are reconciled.
 		Return the journal entry."""
 		if 'payment' in self._context:
-			print "self._context=--------------------------------------------",self._context
 			aml_obj = self.env['account.move.line'].with_context(check_move_validity=False)
 			invoice_currency = False
-			if self.invoice_ids and all([x.currency_id == self.invoice_ids[0].currency_id for x in self.invoice_ids]):
+			if self.invoice_ids and all([x.currency_id == \
+				self.invoice_ids[0].currency_id for x in self.invoice_ids]):
 				#if all the invoices selected share the same currency, record the paiement in that currency too
 				invoice_currency = self.invoice_ids[0].currency_id
 			move = self.env['account.move'].create(self._get_move_vals())
 			p_id = str(self.partner_id.id)
-			print "p_id--------------------------------------------",p_id
-			print "_context--------------------------------",self._context
-			print "_context('payment')--------------------------------",self._context.get('payment')
-			print "_context('payment')--------------------------------",self._context.get('payment')[p_id]
-			print "_context('payment')--------------------------------",self._context.get('payment')[p_id]['inv_val']
+
 			for inv in self._context.get('payment')[p_id]['inv_val']: 
 				#Write line corresponding to invoice payment
 				amount = 0
 				if self._context.get:
 					amount = -(self._context.get('payment')[p_id]['inv_val'][inv]['amount_to_pay'])
-					print "amount------------------------------",amount
 				else:
 					amount = self._context.get('payment')[p_id]['inv_val'][inv]
-					print "amount------------------------------",amount
 
 				debit, credit, amount_currency, currency_id = aml_obj.\
 				with_context(date=self.payment_date).\
@@ -39,20 +33,17 @@ class account_payment(models.Model):
 				self.company_id.currency_id, invoice_currency)
 				
 				current_invoice = self.env['account.invoice'].browse(int(inv))
-				print "current_invoice=----------------------",current_invoice
+				
 				counterpart_aml_dict = self._get_shared_move_line_vals\
 				(debit, credit, amount_currency, move.id, False)
-				print "counterpart_aml_dict--------------",counterpart_aml_dict
 				counterpart_aml_dict.update(self._get_counterpart_move_line_vals\
 				(current_invoice))
-				
 				counterpart_aml_dict.update({'currency_id': currency_id})
 				counterpart_aml = aml_obj.create(counterpart_aml_dict)
-				print "counterpart_aml=----------------",counterpart_aml
+
 				if self._context:
 					payment_difference = self._context.get('payment')\
 					[p_id]['inv_val'][inv]['payment_diff']
-					print "payment_difference------------------",payment_difference
 					#Reconcile with the invoices
 					if self.payment_difference_handling == 'reconcile' and payment_difference:
 						writeoff_line = self._get_shared_move_line_vals(0, 0, 0, move.id, False)
@@ -70,10 +61,8 @@ class account_payment(models.Model):
 						(date=self.payment_date).compute(self.amount, self.company_id.currency_id)
 						if self.invoice_ids[0].type in ['in_invoice', 'out_refund']:
 							amount_wo = total_payment_company_signed - total_residual_company_signed		
-							print "amount_wo-------------------------------",amount_wo
 						else:
 							amount_wo = total_residual_company_signed - total_payment_company_signed
-							print "amount_wo-------------------------------",amount_wo
 						# Align the sign of the secondary currency writeoff amount with the sign of the writeoff
 						# amount in the company currency
 						if amount_wo > 0:
@@ -110,4 +99,4 @@ class account_payment(models.Model):
 				aml_obj.create(liquidity_aml_dict)
 			move.post()
 			return move
-		return super(AccountPayment, self)._create_payment_entry(amount)
+		return super(account_payment, self)._create_payment_entry(amount)
